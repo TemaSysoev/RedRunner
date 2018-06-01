@@ -38,7 +38,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var pulse = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.1)
     var cameraLocateAction = SKAction.move(to: CGPoint(x: 0, y: 0), duration: 0.1)
     
-    
+    func rotaionAction(input: String){
+        var k: CGFloat
+        k = 1.0
+        var rotateAction = SKAction.rotate(toAngle: rocket.zRotation, duration: 0.1)
+        if input == "Up" {
+            k = 1
+            rotateAction = SKAction.rotate(toAngle: rocket.zRotation + 0.1, duration: 0.1)
+        }
+        if input == "Down" {
+            k = 1
+           rotateAction = SKAction.rotate(toAngle: rocket.zRotation - 0.1, duration: 0.1)
+        }
+        if input == "0" {
+            k = 5
+            rocket.physicsBody?.angularVelocity = 0.0
+        }
+        pulse = SKAction.applyImpulse(CGVector(dx: k*cos(rocket.zRotation), dy: k * sin(rocket.zRotation)), duration: 0.01)
+        
+        
+        rocket.run(rotateAction)
+        rocket.run(pulse)
+    }
     
     class func newGameScene() -> GameScene {
         // Load 'GameScene.sks' as an SKScene.
@@ -172,10 +193,7 @@ extension GameScene {
         for codeUnit in event.characters!.utf16 {
             // 119 97 115 100
             if codeUnit == 97 {
-                
-                rocket.zRotation = rocket.zRotation + 0.1
-                pulse = SKAction.applyImpulse(CGVector(dx: 10 * cos(rocket.zRotation), dy: 10 * sin(rocket.zRotation)), duration: 0.01)
-                rocket.run(pulse)
+                rotaionAction(input: "Up")
             }
         
             if codeUnit == 115  {
@@ -183,14 +201,13 @@ extension GameScene {
                 
             }
             if codeUnit == 100 {
-                pulse = SKAction.applyImpulse(CGVector(dx: 10 * cos(rocket.zRotation), dy: 10 * sin(rocket.zRotation)), duration: 0.01)
-                rocket.run(pulse)
-                rocket.zRotation = rocket.zRotation - 0.1
+                 rotaionAction(input: "Down")
+                
                 //actionY = actionY - 5
             }
             
             if codeUnit == 119 {
-                rocket.physicsBody?.angularVelocity = 0.0
+                rotaionAction(input: "0")
                 
             }
             //rocket.physicsBody?.velocity = CGVector(dx: 1000 * cos(rocket.zRotation), dy: 1000 * sin(rocket.zRotation))
