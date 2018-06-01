@@ -29,6 +29,18 @@
 		A367C99920C146AB0065D939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A367C96120C146AB0065D939 /* Assets.xcassets */; };
 		A367C99A20C146AB0065D939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A367C96120C146AB0065D939 /* Assets.xcassets */; };
 		A367C99B20C146AB0065D939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A367C96120C146AB0065D939 /* Assets.xcassets */; };
+		A367C9A820C147CC0065D939 /* Rocket.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9A720C147CC0065D939 /* Rocket.png */; };
+		A367C9A920C14BCE0065D939 /* Rocket.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9A720C147CC0065D939 /* Rocket.png */; };
+		A367C9AA20C14BCF0065D939 /* Rocket.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9A720C147CC0065D939 /* Rocket.png */; };
+		A367C9AC20C153D40065D939 /* Police.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9AB20C153D40065D939 /* Police.png */; };
+		A367C9AD20C153EA0065D939 /* Police.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9AB20C153D40065D939 /* Police.png */; };
+		A367C9AE20C153EB0065D939 /* Police.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9AB20C153D40065D939 /* Police.png */; };
+		A367C9B020C158AC0065D939 /* BackgroundForTurbo.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9AF20C158AC0065D939 /* BackgroundForTurbo.png */; };
+		A367C9B120C159A90065D939 /* BackgroundForTurbo.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9AF20C158AC0065D939 /* BackgroundForTurbo.png */; };
+		A367C9B220C159A90065D939 /* BackgroundForTurbo.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9AF20C158AC0065D939 /* BackgroundForTurbo.png */; };
+		A367C9B420C160810065D939 /* Earth.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9B320C160810065D939 /* Earth.png */; };
+		A367C9B520C160850065D939 /* Earth.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9B320C160810065D939 /* Earth.png */; };
+		A367C9B620C160850065D939 /* Earth.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9B320C160810065D939 /* Earth.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +64,10 @@
 		A367C98A20C146AB0065D939 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		A367C98D20C146AB0065D939 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A367C98F20C146AB0065D939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A367C9A720C147CC0065D939 /* Rocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rocket.png; sourceTree = SOURCE_ROOT; };
+		A367C9AB20C153D40065D939 /* Police.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Police.png; sourceTree = SOURCE_ROOT; };
+		A367C9AF20C158AC0065D939 /* BackgroundForTurbo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundForTurbo.png; sourceTree = SOURCE_ROOT; };
+		A367C9B320C160810065D939 /* Earth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Earth.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +113,10 @@
 				A367C95F20C146A30065D939 /* GameScene.sks */,
 				A367C96020C146A30065D939 /* GameScene.swift */,
 				A367C96120C146AB0065D939 /* Assets.xcassets */,
+				A367C9A720C147CC0065D939 /* Rocket.png */,
+				A367C9AB20C153D40065D939 /* Police.png */,
+				A367C9AF20C158AC0065D939 /* BackgroundForTurbo.png */,
+				A367C9B320C160810065D939 /* Earth.png */,
 			);
 			path = "Turbohead Shared";
 			sourceTree = "<group>";
@@ -246,9 +266,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A367C99320C146AB0065D939 /* GameScene.sks in Resources */,
+				A367C9A820C147CC0065D939 /* Rocket.png in Resources */,
 				A367C96F20C146AB0065D939 /* Main.storyboard in Resources */,
+				A367C9B420C160810065D939 /* Earth.png in Resources */,
 				A367C99020C146AB0065D939 /* Actions.sks in Resources */,
+				A367C9B020C158AC0065D939 /* BackgroundForTurbo.png in Resources */,
 				A367C97220C146AB0065D939 /* LaunchScreen.storyboard in Resources */,
+				A367C9AC20C153D40065D939 /* Police.png in Resources */,
 				A367C99920C146AB0065D939 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,10 +281,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A367C9B520C160850065D939 /* Earth.png in Resources */,
+				A367C9AA20C14BCF0065D939 /* Rocket.png in Resources */,
 				A367C98020C146AB0065D939 /* Main.storyboard in Resources */,
 				A367C99420C146AB0065D939 /* GameScene.sks in Resources */,
+				A367C9AD20C153EA0065D939 /* Police.png in Resources */,
 				A367C99A20C146AB0065D939 /* Assets.xcassets in Resources */,
 				A367C99120C146AB0065D939 /* Actions.sks in Resources */,
+				A367C9B120C159A90065D939 /* BackgroundForTurbo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,10 +296,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A367C9B620C160850065D939 /* Earth.png in Resources */,
+				A367C9A920C14BCE0065D939 /* Rocket.png in Resources */,
 				A367C98E20C146AB0065D939 /* Main.storyboard in Resources */,
 				A367C99520C146AB0065D939 /* GameScene.sks in Resources */,
+				A367C9AE20C153EB0065D939 /* Police.png in Resources */,
 				A367C99B20C146AB0065D939 /* Assets.xcassets in Resources */,
 				A367C99220C146AB0065D939 /* Actions.sks in Resources */,
+				A367C9B220C159A90065D939 /* BackgroundForTurbo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

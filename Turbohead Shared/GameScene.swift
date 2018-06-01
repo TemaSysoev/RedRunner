@@ -7,13 +7,38 @@
 //
 
 import SpriteKit
+import Cocoa
 
-class GameScene: SKScene {
+struct PhysicsCategory {
+    static let None      : UInt32 = 0
+    static let All       : UInt32 = UInt32.max
+    static let Rocket   : UInt32 = 1      // 1
+    static let Earth: UInt32 = 1 << 1
+    static let Police: UInt32 = 1 << 2// 2
+    static let Meteor: UInt32 = 1 << 3
+}
+
+func random() -> CGFloat {
+    return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
+}
+
+func random(_ min: CGFloat, max: CGFloat) -> CGFloat {
+    return random() * (max - min) + min
+}
+
+class GameScene: SKScene, SKPhysicsContactDelegate {
+    var rocket = SKSpriteNode(imageNamed: "Rocket.png")
+    var police = SKSpriteNode(imageNamed: "Police.png")
+    var earth = SKSpriteNode(imageNamed: "Earth.png")
+    var cam: SKCameraNode?
+    
+    var actionX = 0.0
+    var actionY = 0.0
+    
+    var pulse = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.1)
+    var cameraLocateAction = SKAction.move(to: CGPoint(x: 0, y: 0), duration: 0.1)
     
     
-    fileprivate var label : SKLabelNode?
-    fileprivate var spinnyNode : SKShapeNode?
-
     
     class func newGameScene() -> GameScene {
         // Load 'GameScene.sks' as an SKScene.
@@ -29,36 +54,59 @@ class GameScene: SKScene {
     }
     
     func setUpScene() {
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        if let label = self.label {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
-        }
         
-        // Create shape node to use during mouse interaction
-        let w = (self.size.width + self.size.height) * 0.05
-        self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
         
-        if let spinnyNode = self.spinnyNode {
-            spinnyNode.lineWidth = 4.0
-            spinnyNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1)))
-            spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
-                                              SKAction.fadeOut(withDuration: 0.5),
-                                              SKAction.removeFromParent()]))
-            
-            #if os(watchOS)
-                // For watch we just periodically create one of these and let it spin
-                // For other platforms we let user touch/mouse events create these
-                spinnyNode.position = CGPoint(x: 0.0, y: 0.0)
-                spinnyNode.strokeColor = SKColor.red
-                self.run(SKAction.repeatForever(SKAction.sequence([SKAction.wait(forDuration: 2.0),
-                                                                   SKAction.run({
-                                                                       let n = spinnyNode.copy() as! SKShapeNode
-                                                                       self.addChild(n)
-                                                                   })])))
-            #endif
-        }
+        
+        physicsWorld.contactDelegate = self
+        physicsWorld.gravity = CGVector(dx: 0, dy: -0.01)
+        
+        
+        rocket.name = "Rocket"
+        rocket.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+        rocket.zPosition = 10.0
+        rocket.xScale = 0.3
+        rocket.yScale = 0.3
+        
+        rocket.physicsBody = SKPhysicsBody(texture: rocket.texture!, size: rocket.size)
+        rocket.physicsBody?.isDynamic = true
+        rocket.physicsBody?.categoryBitMask = PhysicsCategory.Rocket
+        rocket.physicsBody?.contactTestBitMask = PhysicsCategory.Earth | PhysicsCategory.Police | PhysicsCategory.Meteor
+        rocket.physicsBody?.collisionBitMask = PhysicsCategory.Earth | PhysicsCategory.Police | PhysicsCategory.Meteor
+        rocket.shadowedBitMask = 0
+        
+        police.name = "Police"
+        police.position = CGPoint(x: rocket.position.x - 400, y: rocket.position.y)
+        police.zPosition = 10.0
+        police.xScale = 0.3
+        police.yScale = 0.3
+        
+        police.physicsBody = SKPhysicsBody(texture: police.texture!, size: police.size)
+        police.physicsBody?.isDynamic = true
+        police.physicsBody?.categoryBitMask = PhysicsCategory.Police
+        police.physicsBody?.contactTestBitMask = PhysicsCategory.Earth | PhysicsCategory.Rocket | PhysicsCategory.Meteor
+        police.physicsBody?.collisionBitMask = PhysicsCategory.Earth | PhysicsCategory.Rocket | PhysicsCategory.Meteor
+        police.shadowedBitMask = 0
+        
+        earth.name = "Earth"
+        earth.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 100)
+        earth.zPosition = 10.0
+        earth.xScale = 2.0
+        earth.yScale = 2.0
+        
+        earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
+        earth.physicsBody?.isDynamic = false
+        earth.physicsBody?.categoryBitMask = PhysicsCategory.Earth
+        earth.physicsBody?.contactTestBitMask = PhysicsCategory.Police | PhysicsCategory.Rocket | PhysicsCategory.Meteor
+        earth.physicsBody?.collisionBitMask = PhysicsCategory.Police | PhysicsCategory.Rocket | PhysicsCategory.Meteor
+        earth.shadowedBitMask = 0
+        
+        cam = SKCameraNode()
+        self.camera = cam
+        
+        self.addChild(cam!)
+        self.addChild(rocket)
+        self.addChild(police)
+        self.addChild(earth)
     }
     
     #if os(watchOS)
@@ -71,16 +119,14 @@ class GameScene: SKScene {
     }
     #endif
 
-    func makeSpinny(at pos: CGPoint, color: SKColor) {
-        if let spinny = self.spinnyNode?.copy() as! SKShapeNode? {
-            spinny.position = pos
-            spinny.strokeColor = color
-            self.addChild(spinny)
-        }
-    }
+   
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+      
+        
+        cam?.position = rocket.position
+       // cam?.zRotation = rocket.zRotation
     }
 }
 
@@ -89,9 +135,7 @@ class GameScene: SKScene {
 extension GameScene {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let label = self.label {
-            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
-        }
+        
         
         for t in touches {
             self.makeSpinny(at: t.location(in: self), color: SKColor.green)
@@ -123,20 +167,49 @@ extension GameScene {
 #if os(OSX)
 // Mouse-based event handling
 extension GameScene {
-
-    override func mouseDown(with event: NSEvent) {
-        if let label = self.label {
-            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
+   
+    override func keyDown(with event:NSEvent) {
+        for codeUnit in event.characters!.utf16 {
+            // 119 97 115 100
+            if codeUnit == 97 {
+                
+                rocket.zRotation = rocket.zRotation + 0.1
+                pulse = SKAction.applyImpulse(CGVector(dx: 10 * cos(rocket.zRotation), dy: 10 * sin(rocket.zRotation)), duration: 0.01)
+                rocket.run(pulse)
+            }
+        
+            if codeUnit == 115  {
+                
+                
+            }
+            if codeUnit == 100 {
+                pulse = SKAction.applyImpulse(CGVector(dx: 10 * cos(rocket.zRotation), dy: 10 * sin(rocket.zRotation)), duration: 0.01)
+                rocket.run(pulse)
+                rocket.zRotation = rocket.zRotation - 0.1
+                //actionY = actionY - 5
+            }
+            
+            if codeUnit == 119 {
+                rocket.physicsBody?.angularVelocity = 0.0
+                
+            }
+            //rocket.physicsBody?.velocity = CGVector(dx: 1000 * cos(rocket.zRotation), dy: 1000 * sin(rocket.zRotation))
+            //rocket.physicsBody?.velocity = CGVector(dx: actionX, dy: actionY)
+           
+            
+            
         }
-        self.makeSpinny(at: event.location(in: self), color: SKColor.green)
+    }
+    override func mouseDown(with event: NSEvent) {
+        
     }
     
     override func mouseDragged(with event: NSEvent) {
-        self.makeSpinny(at: event.location(in: self), color: SKColor.blue)
+        
     }
     
     override func mouseUp(with event: NSEvent) {
-        self.makeSpinny(at: event.location(in: self), color: SKColor.red)
+        
     }
 
 }
