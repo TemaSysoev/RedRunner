@@ -89,8 +89,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         rocket.name = "Rocket"
         rocket.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
         rocket.zPosition = 10.0
-        rocket.xScale = 2.0
-        rocket.yScale = 2.0
+        rocket.xScale = 0.7
+        rocket.yScale = 0.7
         
         rocket.physicsBody = SKPhysicsBody(texture: rocket.texture!, size: rocket.size)
         rocket.physicsBody?.isDynamic = true
