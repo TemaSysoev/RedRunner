@@ -41,6 +41,9 @@
 		A367C9B420C160810065D939 /* Earth.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9B320C160810065D939 /* Earth.png */; };
 		A367C9B520C160850065D939 /* Earth.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9B320C160810065D939 /* Earth.png */; };
 		A367C9B620C160850065D939 /* Earth.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9B320C160810065D939 /* Earth.png */; };
+		A39588D320C44E8100732803 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = A3DAFF9620C44DB8008F3606 /* Background.png */; };
+		A39588D420C44E8100732803 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = A3DAFF9620C44DB8008F3606 /* Background.png */; };
+		A3DAFF9720C44DB8008F3606 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = A3DAFF9620C44DB8008F3606 /* Background.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +71,7 @@
 		A367C9AB20C153D40065D939 /* Police.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Police.png; sourceTree = SOURCE_ROOT; };
 		A367C9AF20C158AC0065D939 /* BackgroundForTurbo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundForTurbo.png; sourceTree = SOURCE_ROOT; };
 		A367C9B320C160810065D939 /* Earth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Earth.png; sourceTree = SOURCE_ROOT; };
+		A3DAFF9620C44DB8008F3606 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,7 @@
 				A367C9A720C147CC0065D939 /* Rocket.png */,
 				A367C9AB20C153D40065D939 /* Police.png */,
 				A367C9AF20C158AC0065D939 /* BackgroundForTurbo.png */,
+				A3DAFF9620C44DB8008F3606 /* Background.png */,
 				A367C9B320C160810065D939 /* Earth.png */,
 			);
 			path = "Turbohead Shared";
@@ -272,6 +277,7 @@
 				A367C99020C146AB0065D939 /* Actions.sks in Resources */,
 				A367C9B020C158AC0065D939 /* BackgroundForTurbo.png in Resources */,
 				A367C97220C146AB0065D939 /* LaunchScreen.storyboard in Resources */,
+				A3DAFF9720C44DB8008F3606 /* Background.png in Resources */,
 				A367C9AC20C153D40065D939 /* Police.png in Resources */,
 				A367C99920C146AB0065D939 /* Assets.xcassets in Resources */,
 			);
@@ -287,6 +293,7 @@
 				A367C99420C146AB0065D939 /* GameScene.sks in Resources */,
 				A367C9AD20C153EA0065D939 /* Police.png in Resources */,
 				A367C99A20C146AB0065D939 /* Assets.xcassets in Resources */,
+				A39588D320C44E8100732803 /* Background.png in Resources */,
 				A367C99120C146AB0065D939 /* Actions.sks in Resources */,
 				A367C9B120C159A90065D939 /* BackgroundForTurbo.png in Resources */,
 			);
@@ -302,6 +309,7 @@
 				A367C99520C146AB0065D939 /* GameScene.sks in Resources */,
 				A367C9AE20C153EB0065D939 /* Police.png in Resources */,
 				A367C99B20C146AB0065D939 /* Assets.xcassets in Resources */,
+				A39588D420C44E8100732803 /* Background.png in Resources */,
 				A367C99220C146AB0065D939 /* Actions.sks in Resources */,
 				A367C9B220C159A90065D939 /* BackgroundForTurbo.png in Resources */,
 			);

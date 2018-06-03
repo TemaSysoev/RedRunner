@@ -30,6 +30,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var rocket = SKSpriteNode(imageNamed: "Rocket.png")
     var police = SKSpriteNode(imageNamed: "Police.png")
     var earth = SKSpriteNode(imageNamed: "Earth.png")
+    var background = SKSpriteNode(imageNamed: "Background.png")
     var cam: SKCameraNode?
     
     var actionX = 0.0
@@ -87,7 +88,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         physicsWorld.contactDelegate = self
-        physicsWorld.gravity = CGVector(dx: 0, dy: -0.01)
+        physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         
         
         rocket.name = "Rocket"
@@ -129,9 +130,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         earth.physicsBody?.collisionBitMask = PhysicsCategory.Police | PhysicsCategory.Rocket | PhysicsCategory.Meteor
         earth.shadowedBitMask = 0
         
+        background.zPosition = 5.0
+        background.xScale = 5.0
+        background.yScale = 5.0
+        
+        
         cam = SKCameraNode()
         self.camera = cam
         
+        self.addChild(background)
         self.addChild(cam!)
         self.addChild(rocket)
         self.addChild(police)
@@ -151,6 +158,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
    
     
     override func update(_ currentTime: TimeInterval) {
+        background.position = rocket.position
         policeAction = SKAction.move(to: rocket.position, duration: 0.5)
         // Called before each frame is rendered
         police.run(policeAction)
