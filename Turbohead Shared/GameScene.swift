@@ -36,7 +36,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var actionY = 0.0
     
     var pulse = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.1)
+    var policeAction = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.01)
     var cameraLocateAction = SKAction.move(to: CGPoint(x: 0, y: 0), duration: 0.1)
+    
     
     func rotaionAction(input: String){
         var k: CGFloat
@@ -60,9 +62,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         pulse = SKAction.applyImpulse(CGVector(dx: k*cos(rocket.zRotation), dy: k * sin(rocket.zRotation)), duration: 0.01)
         
-        
         rocket.run(rotateAction)
         rocket.run(pulse)
+        
+        police.zRotation = rocket.zRotation
+        
     }
     
     class func newGameScene() -> GameScene {
@@ -100,10 +104,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         rocket.shadowedBitMask = 0
         
         police.name = "Police"
-        police.position = CGPoint(x: rocket.position.x - 400, y: rocket.position.y)
+        police.position = CGPoint(x: rocket.position.x - 600, y: rocket.position.y)
         police.zPosition = 10.0
-        police.xScale = 0.3
-        police.yScale = 0.3
+        police.xScale = 0.7
+        police.yScale = 0.7
         
         police.physicsBody = SKPhysicsBody(texture: police.texture!, size: police.size)
         police.physicsBody?.isDynamic = true
@@ -147,10 +151,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
    
     
     override func update(_ currentTime: TimeInterval) {
+        policeAction = SKAction.move(to: rocket.position, duration: 0.5)
         // Called before each frame is rendered
+        police.run(policeAction)
         print(rocket.zRotation)
         cam?.position = rocket.position
-       // cam?.zRotation = rocket.zRotation
+       //cam?.zRotation = rocket.zRotation
     }
 }
 
