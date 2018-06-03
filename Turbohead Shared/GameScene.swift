@@ -7,7 +7,7 @@
 //
 
 import SpriteKit
-import Cocoa
+//import Cocoa
 
 struct PhysicsCategory {
     static let None      : UInt32 = 0
@@ -44,14 +44,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var rotateAction = SKAction.rotate(toAngle: rocket.zRotation, duration: 0.1)
         if input == "Up" {
             k = 1
-            rotateAction = SKAction.rotate(toAngle: rocket.zRotation + 0.1, duration: 0.1)
+            rotateAction = SKAction.rotate(toAngle: rocket.zRotation + 0.1, duration: 0.01)
         }
         if input == "Down" {
             k = 1
-           rotateAction = SKAction.rotate(toAngle: rocket.zRotation - 0.1, duration: 0.1)
+           rotateAction = SKAction.rotate(toAngle: rocket.zRotation - 0.1, duration: 0.01)
+        }
+        if input == "1" {
+            k = 5
+            rocket.physicsBody?.angularVelocity = 0.0
         }
         if input == "0" {
-            k = 5
+            k = 0
             rocket.physicsBody?.angularVelocity = 0.0
         }
         pulse = SKAction.applyImpulse(CGVector(dx: k*cos(rocket.zRotation), dy: k * sin(rocket.zRotation)), duration: 0.01)
@@ -85,8 +89,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         rocket.name = "Rocket"
         rocket.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
         rocket.zPosition = 10.0
-        rocket.xScale = 0.3
-        rocket.yScale = 0.3
+        rocket.xScale = 2.0
+        rocket.yScale = 2.0
         
         rocket.physicsBody = SKPhysicsBody(texture: rocket.texture!, size: rocket.size)
         rocket.physicsBody?.isDynamic = true
@@ -109,7 +113,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         police.shadowedBitMask = 0
         
         earth.name = "Earth"
-        earth.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 100)
+        earth.position = CGPoint(x: self.frame.midX - 100, y: self.frame.midY - 100)
         earth.zPosition = 10.0
         earth.xScale = 2.0
         earth.yScale = 2.0
@@ -144,8 +148,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-      
-        
+        print(rocket.zRotation)
         cam?.position = rocket.position
        // cam?.zRotation = rocket.zRotation
     }
@@ -154,30 +157,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 #if os(iOS) || os(tvOS)
 // Touch-based event handling
 extension GameScene {
-
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         
         for t in touches {
-            self.makeSpinny(at: t.location(in: self), color: SKColor.green)
+            if t.location(in: self.scene!).y > 0.0 {
+                rotaionAction(input: "Up")
+            } else {
+                rotaionAction(input: "Down")
+            }
         }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
-            self.makeSpinny(at: t.location(in: self), color: SKColor.blue)
+            rotaionAction(input: "1")
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
-            self.makeSpinny(at: t.location(in: self), color: SKColor.red)
+             rotaionAction(input: "0")
         }
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
-            self.makeSpinny(at: t.location(in: self), color: SKColor.red)
+           
         }
     }
     
@@ -197,7 +204,7 @@ extension GameScene {
             }
         
             if codeUnit == 115  {
-                
+                 rotaionAction(input: "0")
                 
             }
             if codeUnit == 100 {
@@ -207,7 +214,7 @@ extension GameScene {
             }
             
             if codeUnit == 119 {
-                rotaionAction(input: "0")
+                rotaionAction(input: "1")
                 
             }
             //rocket.physicsBody?.velocity = CGVector(dx: 1000 * cos(rocket.zRotation), dy: 1000 * sin(rocket.zRotation))
