@@ -244,10 +244,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var yPos = 6000
         for _ in 1...10000 {
         
-            var random = arc4random_uniform(2)
+            var random = arc4random_uniform(3)
             if random == 0 {
                 print(random)
                 self.addChild(earth.copy() as! SKNode)
+                 earth.texture = SKTexture(imageNamed: "House.png")
+                earth.physicsBody?.isDynamic = false
+                earth.position = CGPoint(x: xPos,y: yPos)
+            }else{print(random)}
+            if random == 1 {
+                print(random)
+                self.addChild(earth.copy() as! SKNode)
+                earth.texture = SKTexture(imageNamed: "Stop.png")
+                earth.physicsBody?.isDynamic = true
                 earth.position = CGPoint(x: xPos,y: yPos)
             }else{print(random)}
             xPos = xPos + 150
@@ -289,23 +298,31 @@ extension GameScene {
         
         
         for t in touches {
-            if t.location(in: self.scene!).y > 0.0 {
-                rotaionAction(input: "Up")
-            } else {
-                rotaionAction(input: "Down")
-            }
+            
         }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
-            rotaionAction(input: "1")
+            if t.location(in: self.scene!).x - t.previousLocation(in: self.scene!).x < 0.0 {
+                rotaionAction(input: "Up")
+            }
+            if t.location(in: self.scene!).x - t.previousLocation(in: self.scene!).x > 0.0 {
+                rotaionAction(input: "Down")
+            }
+            if t.location(in: self.scene!).y - t.previousLocation(in: self.scene!).y > 0.0 {
+                 rotaionAction(input: "1")
+            }
+            if t.location(in: self.scene!).y - t.previousLocation(in: self.scene!).y < 0.0 {
+                rotaionAction(input: "0")
+            }
+           
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
-             rotaionAction(input: "0")
+            
         }
     }
     
