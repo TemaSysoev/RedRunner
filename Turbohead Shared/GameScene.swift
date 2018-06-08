@@ -7,7 +7,7 @@
 //
 
 import SpriteKit
-//import Cocoa
+//import Cocoa//
 
 struct PhysicsCategory {
     static let None      : UInt32 = 0
