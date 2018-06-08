@@ -25,17 +25,23 @@ func random() -> CGFloat {
 func random(_ min: CGFloat, max: CGFloat) -> CGFloat {
     return random() * (max - min) + min
 }
+    public var rocket = SKSpriteNode(imageNamed: "Rocket.png")
+    public var police = SKSpriteNode(imageNamed: "Police.png")
+    public var earth = SKSpriteNode(imageNamed: "Earth.png")
+    public var background1 = SKSpriteNode(imageNamed: "Background.png")
+    public var background2 = SKSpriteNode(imageNamed: "Background.png")
+    public var background3 = SKSpriteNode(imageNamed: "Background.png")
+    public var background4 = SKSpriteNode(imageNamed: "Background.png")
+    public var cam: SKCameraNode?
+
+    public var deltaX = CGFloat(150)
+    public var deltaY = CGFloat(300)
+    public var oldDeltaX = CGFloat(0)
+    public var oldDeltaY = CGFloat(0)
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
-    var rocket = SKSpriteNode(imageNamed: "Rocket.png")
-    var police = SKSpriteNode(imageNamed: "Police.png")
-    var earth = SKSpriteNode(imageNamed: "Earth.png")
-    var background = SKSpriteNode(imageNamed: "Background.png")
-    var cam: SKCameraNode?
     
-    var actionX = 0.0
-    var actionY = 0.0
-    
+   
     var pulse = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.1)
     var policeAction = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.01)
     var cameraLocateAction = SKAction.move(to: CGPoint(x: 0, y: 0), duration: 0.1)
@@ -46,27 +52,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         k = 1.0
         var rotateAction = SKAction.rotate(toAngle: rocket.zRotation, duration: 0.1)
         if input == "Up" {
-            k = 1
+            k = 0.25
             rotateAction = SKAction.rotate(toAngle: rocket.zRotation + 0.1, duration: 0.01)
         }
         if input == "Down" {
-            k = 1
+            k = 0.25
            rotateAction = SKAction.rotate(toAngle: rocket.zRotation - 0.1, duration: 0.01)
         }
         if input == "1" {
-            k = 5
+            k = 2
             rocket.physicsBody?.angularVelocity = 0.0
         }
         if input == "0" {
-            k = 0
+            k = -2
             rocket.physicsBody?.angularVelocity = 0.0
         }
         pulse = SKAction.applyImpulse(CGVector(dx: k*cos(rocket.zRotation), dy: k * sin(rocket.zRotation)), duration: 0.01)
-        
+        rocket.physicsBody?.angularVelocity = 0.0
         rocket.run(rotateAction)
         rocket.run(pulse)
         
         police.zRotation = rocket.zRotation
+        
+        
         
     }
     
@@ -94,8 +102,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         rocket.name = "Rocket"
         rocket.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
         rocket.zPosition = 10.0
-        rocket.xScale = 0.7
-        rocket.yScale = 0.7
+        rocket.xScale = 0.6
+        rocket.yScale = 0.6
         
         rocket.physicsBody = SKPhysicsBody(texture: rocket.texture!, size: rocket.size)
         rocket.physicsBody?.isDynamic = true
@@ -105,7 +113,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         rocket.shadowedBitMask = 0
         
         police.name = "Police"
-        police.position = CGPoint(x: rocket.position.x - 600, y: rocket.position.y)
+        police.position = CGPoint(x: rocket.position.x - 400, y: rocket.position.y)
         police.zPosition = 10.0
         police.xScale = 0.7
         police.yScale = 0.7
@@ -118,7 +126,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         police.shadowedBitMask = 0
         
         earth.name = "Earth"
-        earth.position = CGPoint(x: self.frame.midX - 100, y: self.frame.midY - 100)
+        earth.position = CGPoint(x: self.frame.midX - 600, y: self.frame.midY)
+        earth.zRotation = CGFloat.pi/2
         earth.zPosition = 10.0
         earth.xScale = 2.0
         earth.yScale = 2.0
@@ -130,19 +139,81 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         earth.physicsBody?.collisionBitMask = PhysicsCategory.Police | PhysicsCategory.Rocket | PhysicsCategory.Meteor
         earth.shadowedBitMask = 0
         
-        background.zPosition = 5.0
-        background.xScale = 5.0
-        background.yScale = 5.0
         
+        background1.zPosition = 5.0
+        background1.xScale = 3.0
+        background1.yScale = 3.0
+        
+        background2.zPosition = 5.0
+        background2.xScale = 3.0
+        background2.yScale = 3.0
+        
+        background3.zPosition = 5.0
+        background3.xScale = 3.0
+        background3.yScale = 3.0
+        
+        background4.zPosition = 5.0
+        background4.xScale = 3.0
+        background4.yScale = 3.0
         
         cam = SKCameraNode()
         self.camera = cam
         
-        self.addChild(background)
+       // self.addChild(background1)
+       // self.addChild(background2)
+       // self.addChild(background3)
+        //self.addChild(background4)
         self.addChild(cam!)
         self.addChild(rocket)
         self.addChild(police)
         self.addChild(earth)
+        
+        //Площадь
+        self.addChild(earth.copy() as! SKNode)
+        earth.position = CGPoint(x: self.frame.midX - 600, y: self.frame.midY - 150)
+        
+        self.addChild(earth.copy() as! SKNode)
+        earth.position = CGPoint(x: self.frame.midX - 600, y: self.frame.midY + 150)
+        
+        self.addChild(earth.copy() as! SKNode)
+        earth.position = CGPoint(x: self.frame.midX + 150, y: self.frame.midY + 300)
+        
+        self.addChild(earth.copy() as! SKNode)
+        earth.position = CGPoint(x: self.frame.midX - 600, y: self.frame.midY + 300)
+        
+        self.addChild(earth.copy() as! SKNode)
+        earth.position = CGPoint(x: self.frame.midX - 600, y: self.frame.midY - 300)
+        
+        self.addChild(earth.copy() as! SKNode)
+        earth.zRotation = 0.0
+        earth.position = CGPoint(x: self.frame.midX - 450, y: self.frame.midY + 325)
+    
+        self.addChild(earth.copy() as! SKNode)
+        earth.position = CGPoint(x: self.frame.midX - 300, y: self.frame.midY + 325)
+        
+        self.addChild(earth.copy() as! SKNode)
+        earth.position = CGPoint(x: self.frame.midX - 150, y: self.frame.midY + 325)
+        self.addChild(earth.copy() as! SKNode)
+        earth.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 325)
+        
+        self.addChild(earth.copy() as! SKNode)
+        earth.position = CGPoint(x: self.frame.midX - 450, y: self.frame.midY - 325)
+        
+        self.addChild(earth.copy() as! SKNode)
+        earth.position = CGPoint(x: self.frame.midX - 300, y: self.frame.midY - 325)
+        
+        self.addChild(earth.copy() as! SKNode)
+        earth.position = CGPoint(x: self.frame.midX - 150, y: self.frame.midY - 325)
+        self.addChild(earth.copy() as! SKNode)
+        earth.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 325)
+
+        //Выезд с площади
+        self.addChild(earth.copy() as! SKNode)
+        earth.position = CGPoint(x: self.frame.midX + 200, y: self.frame.midY - 100)
+        
+        self.addChild(earth.copy() as! SKNode)
+        earth.position = CGPoint(x: self.frame.midX + 200, y: self.frame.midY + 100)
+        
     }
     
     #if os(watchOS)
@@ -158,11 +229,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
    
     
     override func update(_ currentTime: TimeInterval) {
-        background.position = rocket.position
-        policeAction = SKAction.move(to: rocket.position, duration: 0.5)
-        // Called before each frame is rendered
-        police.run(policeAction)
-        print(rocket.zRotation)
+        background1.position = CGPoint(x: rocket.position.x + 250, y: rocket.position.y + 250)
+        background2.position = CGPoint(x: rocket.position.x - 250, y: rocket.position.y + 500)
+        background3.position = CGPoint(x: rocket.position.x - 250, y: rocket.position.y - 250)
+        background4.position = CGPoint(x: rocket.position.x + 250, y: rocket.position.y - 250)
+        
         cam?.position = rocket.position
        //cam?.zRotation = rocket.zRotation
     }
@@ -171,7 +242,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 #if os(iOS) || os(tvOS)
 // Touch-based event handling
 extension GameScene {
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         
@@ -231,8 +302,11 @@ extension GameScene {
                 rotaionAction(input: "1")
                 
             }
-            //rocket.physicsBody?.velocity = CGVector(dx: 1000 * cos(rocket.zRotation), dy: 1000 * sin(rocket.zRotation))
-            //rocket.physicsBody?.velocity = CGVector(dx: actionX, dy: actionY)
+            policeAction = SKAction.applyImpulse(CGVector(dx: (rocket.position.x - police.position.x)/100, dy: (rocket.position.y - police.position.y)/100), duration: 1.0)
+            police.physicsBody?.angularVelocity = 0.0
+            police.run(policeAction)
+            //self.addChild(police.copy() as! SKNode)
+           
            
             
             
