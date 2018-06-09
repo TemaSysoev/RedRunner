@@ -25,7 +25,7 @@ func random() -> CGFloat {
 func random(_ min: CGFloat, max: CGFloat) -> CGFloat {
     return random() * (max - min) + min
 }
-    public var rocket = SKSpriteNode(imageNamed: "SpaceRocket.png")
+    public var rocket = SKSpriteNode(imageNamed: "Rocket.png")
     public var police = SKSpriteNode(imageNamed: "Police.png")
     public var earth = SKSpriteNode(imageNamed: "House.png")
     public var background1 = SKSpriteNode(imageNamed: "Background.png")
@@ -71,7 +71,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         rocket.physicsBody?.angularVelocity = 0.0
         rocket.run(rotateAction)
         rocket.run(pulse)
-        
         police.zRotation = rocket.zRotation
         
         
@@ -103,8 +102,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         rocket.childNode(withName: "Rocket")
         rocket.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
         rocket.zPosition = 10.0
-        rocket.xScale = 0.12
-        rocket.yScale = 0.12
+        rocket.xScale = 0.9
+        rocket.yScale = 0.9
         
         rocket.physicsBody = SKPhysicsBody(texture: rocket.texture!, size: rocket.size)
         rocket.physicsBody?.isDynamic = true
@@ -116,8 +115,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         police.name = "Police"
         police.position = CGPoint(x: rocket.position.x - 400, y: rocket.position.y)
         police.zPosition = 10.0
-        police.xScale = 0.7
-        police.yScale = 0.7
+        police.xScale = 0.9
+        police.yScale = 0.9
         
         police.physicsBody = SKPhysicsBody(texture: police.texture!, size: police.size)
         police.physicsBody?.isDynamic = true
@@ -129,8 +128,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         earth.name = "Earth"
         earth.position = CGPoint(x: self.frame.midX - 600, y: self.frame.midY)
         earth.zPosition = 10.0
-        earth.xScale = 0.4
-        earth.yScale = 0.4
+        earth.xScale = 0.35
+        earth.yScale = 0.35
         
         earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
         earth.physicsBody?.isDynamic = false
@@ -168,83 +167,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(police)
         self.addChild(earth)
         
-        /*
-        //Площадь
-        self.addChild(earth.copy() as! SKNode)
-        earth.position = CGPoint(x: self.frame.midX - 600, y: self.frame.midY - 150)
         
-        self.addChild(earth.copy() as! SKNode)
-        earth.position = CGPoint(x: self.frame.midX - 600, y: self.frame.midY + 150)
-        
-        self.addChild(earth.copy() as! SKNode)
-        earth.position = CGPoint(x: self.frame.midX + 150, y: self.frame.midY + 300)
-        
-        self.addChild(earth.copy() as! SKNode)
-        earth.position = CGPoint(x: self.frame.midX + 150, y: self.frame.midY - 300)
-        
-        self.addChild(earth.copy() as! SKNode)
-        earth.position = CGPoint(x: self.frame.midX - 600, y: self.frame.midY + 300)
-        
-        self.addChild(earth.copy() as! SKNode)
-        earth.position = CGPoint(x: self.frame.midX - 600, y: self.frame.midY - 300)
-        
-        self.addChild(earth.copy() as! SKNode)
-        earth.position = CGPoint(x: self.frame.midX - 450, y: self.frame.midY + 300)
-    
-        self.addChild(earth.copy() as! SKNode)
-        earth.position = CGPoint(x: self.frame.midX - 300, y: self.frame.midY + 300)
-        
-        self.addChild(earth.copy() as! SKNode)
-        earth.position = CGPoint(x: self.frame.midX - 150, y: self.frame.midY + 300)
-        self.addChild(earth.copy() as! SKNode)
-        earth.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 300)
-        
-        self.addChild(earth.copy() as! SKNode)
-        earth.position = CGPoint(x: self.frame.midX - 450, y: self.frame.midY - 300)
-        
-        self.addChild(earth.copy() as! SKNode)
-        earth.position = CGPoint(x: self.frame.midX - 300, y: self.frame.midY - 300)
-        
-        self.addChild(earth.copy() as! SKNode)
-        earth.position = CGPoint(x: self.frame.midX - 150, y: self.frame.midY - 300)
-        self.addChild(earth.copy() as! SKNode)
-        earth.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 300)
-        
-        self.addChild(earth.copy() as! SKNode)
-        earth.position = CGPoint(x: self.frame.midX + 300, y: self.frame.midY + 300)
-        
-        self.addChild(earth.copy() as! SKNode)
-        earth.position = CGPoint(x: self.frame.midX + 300, y: self.frame.midY - 300)
-        
-        self.addChild(earth.copy() as! SKNode)
-        earth.position = CGPoint(x: self.frame.midX + 300, y: self.frame.midY - 150)
-        
-        self.addChild(earth.copy() as! SKNode)
-        earth.position = CGPoint(x: self.frame.midX + 300, y: self.frame.midY + 150)
-        //Выезд с площади
-        self.addChild(earth.copy() as! SKNode)
-        earth.position = CGPoint(x: self.frame.midX + 450, y: self.frame.midY - 150)
-        
-        self.addChild(earth.copy() as! SKNode)
-        earth.position = CGPoint(x: self.frame.midX + 450, y: self.frame.midY + 150)
-        
-        self.addChild(earth.copy() as! SKNode)
-        earth.position = CGPoint(x: self.frame.midX + 600, y: self.frame.midY - 150)
-        
-        self.addChild(earth.copy() as! SKNode)
-        earth.position = CGPoint(x: self.frame.midX + 600, y: self.frame.midY + 150)
-        
-        self.addChild(earth.copy() as! SKNode)
-        earth.position = CGPoint(x: self.frame.midX + 750, y: self.frame.midY - 150)
-        
-        self.addChild(earth.copy() as! SKNode)
-        earth.position = CGPoint(x: self.frame.midX + 750, y: self.frame.midY + 150)
-        */
         var xPos = -6000
         var yPos = 6000
+        var random = arc4random_uniform(2)
         for _ in 1...10000 {
-        
-            var random = arc4random_uniform(3)
+            
+           random = arc4random_uniform(2)
+            if (xPos == Int(self.frame.midX)) && (yPos == Int(self.frame.midY)) || (xPos == Int(self.frame.midX - 400)) && (yPos == Int(self.frame.midY)){
+                random = 1
+            }
             if random == 0 {
                 print(random)
                 self.addChild(earth.copy() as! SKNode)
@@ -252,13 +184,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 earth.physicsBody?.isDynamic = false
                 earth.position = CGPoint(x: xPos,y: yPos)
             }else{print(random)}
+            /*
             if random == 1 {
                 print(random)
                 self.addChild(earth.copy() as! SKNode)
                 earth.texture = SKTexture(imageNamed: "Stop.png")
                 earth.physicsBody?.isDynamic = true
                 earth.position = CGPoint(x: xPos,y: yPos)
-            }else{print(random)}
+ }else{print(random)}*/
             xPos = xPos + 150
             if xPos > 6000 {
                 xPos = -6000
