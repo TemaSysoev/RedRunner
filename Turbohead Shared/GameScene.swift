@@ -128,8 +128,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         earth.name = "Earth"
         earth.position = CGPoint(x: self.frame.midX - 600, y: self.frame.midY)
         earth.zPosition = 10.0
-        earth.xScale = 0.35
-        earth.yScale = 0.35
+        earth.xScale = 2.1
+        earth.yScale = 2.1
         
         earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
         earth.physicsBody?.isDynamic = false
