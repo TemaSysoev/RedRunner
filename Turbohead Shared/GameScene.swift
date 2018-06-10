@@ -178,14 +178,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if (xPos == Int(self.frame.midX)) && (yPos == Int(self.frame.midY)) || (xPos == Int(self.frame.midX - 400)) && (yPos == Int(self.frame.midY)){
                     random = 1
             }
-            if random <= 5 {
+            if random == 2 {
                     print(random)
                     self.addChild(earth.copy() as! SKNode)
                     earth.texture = SKTexture(imageNamed: "House.png")
                     earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
                     earth.physicsBody?.isDynamic = false
                     earth.position = CGPoint(x: xPos,y: yPos)
-            }
+            }else{print(random)}
             /*
             if random == 6 {
                     self.addChild(earth.copy() as! SKNode)
