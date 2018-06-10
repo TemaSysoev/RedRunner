@@ -25,19 +25,21 @@ func random() -> CGFloat {
 func random(_ min: CGFloat, max: CGFloat) -> CGFloat {
     return random() * (max - min) + min
 }
-    public var rocket = SKSpriteNode(imageNamed: "Rocket.png")
-    public var police = SKSpriteNode(imageNamed: "Police.png")
-    public var earth = SKSpriteNode(imageNamed: "House.png")
-    public var background1 = SKSpriteNode(imageNamed: "Background.png")
-    public var background2 = SKSpriteNode(imageNamed: "Background.png")
-    public var background3 = SKSpriteNode(imageNamed: "Background.png")
-    public var background4 = SKSpriteNode(imageNamed: "Background.png")
-    public var cam: SKCameraNode?
 
-    public var deltaX = CGFloat(150)
-    public var deltaY = CGFloat(300)
-    public var oldDeltaX = CGFloat(0)
-    public var oldDeltaY = CGFloat(0)
+public var rocket = SKSpriteNode(imageNamed: "Rocket.png")
+public var police = SKSpriteNode(imageNamed: "Police.png")
+public var earth = SKSpriteNode(imageNamed: "House.png")
+public var stop = SKSpriteNode(imageNamed: "Stop.png")
+public var background1 = SKSpriteNode(imageNamed: "Background.png")
+public var background2 = SKSpriteNode(imageNamed: "Background.png")
+public var background3 = SKSpriteNode(imageNamed: "Background.png")
+public var background4 = SKSpriteNode(imageNamed: "Background.png")
+public var cam: SKCameraNode?
+
+public var deltaX = CGFloat(150)
+public var deltaY = CGFloat(300)
+public var oldDeltaX = CGFloat(0)
+public var oldDeltaY = CGFloat(0)
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
@@ -138,6 +140,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         earth.physicsBody?.contactTestBitMask = PhysicsCategory.Police | PhysicsCategory.Rocket | PhysicsCategory.Meteor | PhysicsCategory.Earth
         earth.physicsBody?.collisionBitMask = PhysicsCategory.Police | PhysicsCategory.Rocket | PhysicsCategory.Meteor | PhysicsCategory.Earth
         earth.shadowedBitMask = 0
+        
+        stop.name = "Stop"
+        stop.position = CGPoint(x: self.frame.midX - 600, y: self.frame.midY)
+        stop.zPosition = 9.0
+        stop.xScale = 2.1
+        stop.yScale = 2.1
+        
+        stop.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
+        stop.physicsBody?.isDynamic = true
+        stop.physicsBody?.categoryBitMask = PhysicsCategory.Meteor
+        stop.physicsBody?.contactTestBitMask = PhysicsCategory.Police | PhysicsCategory.Rocket | PhysicsCategory.Meteor | PhysicsCategory.Earth
+        stop.physicsBody?.collisionBitMask = PhysicsCategory.Police | PhysicsCategory.Rocket | PhysicsCategory.Meteor | PhysicsCategory.Earth
+        stop.shadowedBitMask = 0
         
         
         background1.zPosition = 5.0
