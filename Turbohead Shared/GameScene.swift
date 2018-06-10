@@ -171,50 +171,45 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         var xPos = -6000
         var yPos = 6000
-        var random = arc4random_uniform(10)
-        for _ in 1...10000 {
-            
+        var random = arc4random_uniform(2)
+        var counter = 1
+        for _ in 1...5000 {
+            counter = counter + 1
            random = arc4random_uniform(10)
             if (xPos == Int(self.frame.midX)) && (yPos == Int(self.frame.midY)) || (xPos == Int(self.frame.midX - 400)) && (yPos == Int(self.frame.midY)){
                     random = 1
             }
-            if random == 2 {
+            if random == 1 {
                     print(random)
                     self.addChild(earth.copy() as! SKNode)
                     earth.texture = SKTexture(imageNamed: "House.png")
-                    earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
+                   // earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
                     earth.physicsBody?.isDynamic = false
                     earth.position = CGPoint(x: xPos,y: yPos)
             }else{print(random)}
-            /*
+            
             if random == 6 {
                     self.addChild(earth.copy() as! SKNode)
                     earth.texture = SKTexture(imageNamed: "HouseSale.png")
-                    earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
+                    //earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
                     earth.physicsBody?.isDynamic = false
                     earth.position = CGPoint(x: xPos,y: yPos)
             }
                 if random == 7 {
                     self.addChild(earth.copy() as! SKNode)
                     earth.texture = SKTexture(imageNamed: "HouseBar.png")
-                    earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
+                    //earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
                     earth.physicsBody?.isDynamic = false
                     earth.position = CGPoint(x: xPos,y: yPos)
                 }
                 if random == 7 {
                     self.addChild(earth.copy() as! SKNode)
                     earth.texture = SKTexture(imageNamed: "HouseCinema.png")
-                    earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
+                    //earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
                     earth.physicsBody?.isDynamic = false
                     earth.position = CGPoint(x: xPos,y: yPos)
                 }
-                if random == 8 {
-                    self.addChild(earth.copy() as! SKNode)
-                    earth.texture = SKTexture(imageNamed: "Stop.png")
-                    earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
-                    earth.physicsBody?.isDynamic = true
-                    earth.position = CGPoint(x: xPos,y: yPos)
-                }*/
+               
             /*
             if random == 1 {
                 print(random)
@@ -229,6 +224,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 yPos = yPos - 150
             }
         }
+        print(counter)
     }
     
     #if os(watchOS)
