@@ -54,12 +54,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         k = 1.0
         var rotateAction = SKAction.rotate(toAngle: rocket.zRotation, duration: 0.1)
         if input == "Up" {
-            k = 0.25
-            rotateAction = SKAction.rotate(toAngle: rocket.zRotation + 0.1, duration: 0.01)
+            k = 0.1
+            rotateAction = SKAction.rotate(toAngle: rocket.zRotation + 0.1, duration: 0.005)
         }
         if input == "Down" {
-            k = 0.25
-           rotateAction = SKAction.rotate(toAngle: rocket.zRotation - 0.1, duration: 0.01)
+            k = 0.1
+           rotateAction = SKAction.rotate(toAngle: rocket.zRotation - 0.1, duration: 0.005)
         }
         if input == "1" {
             rocket.run(SKAction.animate(with: [SKTexture(imageNamed: "RocketRun.png")], timePerFrame: 0.02, resize: false, restore: true))
@@ -147,7 +147,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         stop.xScale = 2.1
         stop.yScale = 2.1
         
-        stop.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
+        stop.physicsBody = SKPhysicsBody(texture: stop.texture!, size: stop.size)
         stop.physicsBody?.isDynamic = true
         stop.physicsBody?.categoryBitMask = PhysicsCategory.Meteor
         stop.physicsBody?.contactTestBitMask = PhysicsCategory.Police | PhysicsCategory.Rocket | PhysicsCategory.Meteor | PhysicsCategory.Earth
@@ -182,57 +182,52 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(rocket)
         self.addChild(police)
         self.addChild(earth)
+        self.addChild(stop)
         
         
         var xPos = -6000
         var yPos = 6000
-        var random = arc4random_uniform(2)
+        var random = arc4random_uniform(100)
         var counter = 1
         for _ in 1...5000 {
             counter = counter + 1
-           random = arc4random_uniform(10)
+           random = arc4random_uniform(100)
             if (xPos == Int(self.frame.midX)) && (yPos == Int(self.frame.midY)) || (xPos == Int(self.frame.midX - 400)) && (yPos == Int(self.frame.midY)){
                     random = 1
             }
-            if random == 1 {
+            if random <= 5 {
                     print(random)
                     self.addChild(earth.copy() as! SKNode)
                     earth.texture = SKTexture(imageNamed: "House.png")
                    // earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
-                    earth.physicsBody?.isDynamic = false
                     earth.position = CGPoint(x: xPos,y: yPos)
-            }else{print(random)}
+            }
             
-            if random == 6 {
+            if (random > 5) && (random <= 8){
                     self.addChild(earth.copy() as! SKNode)
                     earth.texture = SKTexture(imageNamed: "HouseSale.png")
                     //earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
-                    earth.physicsBody?.isDynamic = false
                     earth.position = CGPoint(x: xPos,y: yPos)
             }
-                if random == 7 {
-                    self.addChild(earth.copy() as! SKNode)
-                    earth.texture = SKTexture(imageNamed: "HouseBar.png")
-                    //earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
-                    earth.physicsBody?.isDynamic = false
-                    earth.position = CGPoint(x: xPos,y: yPos)
-                }
-                if random == 7 {
-                    self.addChild(earth.copy() as! SKNode)
-                    earth.texture = SKTexture(imageNamed: "HouseCinema.png")
-                    //earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
-                    earth.physicsBody?.isDynamic = false
-                    earth.position = CGPoint(x: xPos,y: yPos)
-                }
-               
-            /*
-            if random == 1 {
-                print(random)
+            if (random > 8) && (random <= 13){
                 self.addChild(earth.copy() as! SKNode)
-                earth.texture = SKTexture(imageNamed: "Stop.png")
-                earth.physicsBody?.isDynamic = true
+                earth.texture = SKTexture(imageNamed: "HouseBar.png")
+                //earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
                 earth.position = CGPoint(x: xPos,y: yPos)
- }else{print(random)}*/
+            }
+            if (random > 13) && (random <= 15) {
+                self.addChild(earth.copy() as! SKNode)
+                earth.texture = SKTexture(imageNamed: "HouseCinema.png")
+                //earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
+                earth.position = CGPoint(x: xPos,y: yPos)
+            }
+               
+            
+                if random == 16 {
+                    print(random)
+                    self.addChild(stop.copy() as! SKNode)
+                    stop.position = CGPoint(x: xPos,y: yPos)
+                }
             xPos = xPos + 150
             if xPos > 6000 {
                 xPos = -6000
@@ -339,7 +334,7 @@ extension GameScene {
             policeAction = SKAction.applyImpulse(CGVector(dx: (rocket.position.x - police.position.x)/100, dy: (rocket.position.y - police.position.y)/100), duration: 1.0)
             police.physicsBody?.angularVelocity = 0.0
             police.run(policeAction)
-            //self.addChild(police.copy() as! SKNode)
+            
            
            
             
