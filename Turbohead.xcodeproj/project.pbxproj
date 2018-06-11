@@ -83,6 +83,18 @@
 		A39588D320C44E8100732803 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = A3DAFF9620C44DB8008F3606 /* Background.png */; };
 		A39588D420C44E8100732803 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = A3DAFF9620C44DB8008F3606 /* Background.png */; };
 		A3DAFF9720C44DB8008F3606 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = A3DAFF9620C44DB8008F3606 /* Background.png */; };
+		E0154DC620CED5EC00E58663 /* House4.png in Resources */ = {isa = PBXBuildFile; fileRef = E0154DC220CED5EB00E58663 /* House4.png */; };
+		E0154DC720CED5EC00E58663 /* House3.png in Resources */ = {isa = PBXBuildFile; fileRef = E0154DC320CED5EB00E58663 /* House3.png */; };
+		E0154DC820CED5EC00E58663 /* House5.png in Resources */ = {isa = PBXBuildFile; fileRef = E0154DC420CED5EB00E58663 /* House5.png */; };
+		E0154DC920CED5EC00E58663 /* House2.png in Resources */ = {isa = PBXBuildFile; fileRef = E0154DC520CED5EB00E58663 /* House2.png */; };
+		E0154DCA20CED5F200E58663 /* House2.png in Resources */ = {isa = PBXBuildFile; fileRef = E0154DC520CED5EB00E58663 /* House2.png */; };
+		E0154DCB20CED5F200E58663 /* House3.png in Resources */ = {isa = PBXBuildFile; fileRef = E0154DC320CED5EB00E58663 /* House3.png */; };
+		E0154DCC20CED5F200E58663 /* House4.png in Resources */ = {isa = PBXBuildFile; fileRef = E0154DC220CED5EB00E58663 /* House4.png */; };
+		E0154DCD20CED5F200E58663 /* House5.png in Resources */ = {isa = PBXBuildFile; fileRef = E0154DC420CED5EB00E58663 /* House5.png */; };
+		E0154DCE20CED5F200E58663 /* House2.png in Resources */ = {isa = PBXBuildFile; fileRef = E0154DC520CED5EB00E58663 /* House2.png */; };
+		E0154DCF20CED5F200E58663 /* House3.png in Resources */ = {isa = PBXBuildFile; fileRef = E0154DC320CED5EB00E58663 /* House3.png */; };
+		E0154DD020CED5F200E58663 /* House4.png in Resources */ = {isa = PBXBuildFile; fileRef = E0154DC220CED5EB00E58663 /* House4.png */; };
+		E0154DD120CED5F200E58663 /* House5.png in Resources */ = {isa = PBXBuildFile; fileRef = E0154DC420CED5EB00E58663 /* House5.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,6 +136,10 @@
 		A367C9AF20C158AC0065D939 /* BackgroundForTurbo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundForTurbo.png; sourceTree = SOURCE_ROOT; };
 		A367C9B320C160810065D939 /* Earth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Earth.png; sourceTree = SOURCE_ROOT; };
 		A3DAFF9620C44DB8008F3606 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = SOURCE_ROOT; };
+		E0154DC220CED5EB00E58663 /* House4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = House4.png; sourceTree = SOURCE_ROOT; };
+		E0154DC320CED5EB00E58663 /* House3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = House3.png; sourceTree = SOURCE_ROOT; };
+		E0154DC420CED5EB00E58663 /* House5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = House5.png; sourceTree = SOURCE_ROOT; };
+		E0154DC520CED5EB00E58663 /* House2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = House2.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +185,10 @@
 				A367C95F20C146A30065D939 /* GameScene.sks */,
 				A367C96020C146A30065D939 /* GameScene.swift */,
 				A367C96120C146AB0065D939 /* Assets.xcassets */,
+				E0154DC520CED5EB00E58663 /* House2.png */,
+				E0154DC320CED5EB00E58663 /* House3.png */,
+				E0154DC220CED5EB00E58663 /* House4.png */,
+				E0154DC420CED5EB00E58663 /* House5.png */,
 				A31B6AD020CBF7560071090A /* HouseBar.png */,
 				A31B6ACF20CBF7550071090A /* HouseCinema.png */,
 				A31B6AD120CBF7570071090A /* HouseSale.png */,
@@ -340,6 +360,8 @@
 				A31B6AAD20CA9DB00071090A /* House.png in Resources */,
 				A367C96F20C146AB0065D939 /* Main.storyboard in Resources */,
 				A367C9B420C160810065D939 /* Earth.png in Resources */,
+				E0154DC620CED5EC00E58663 /* House4.png in Resources */,
+				E0154DC720CED5EC00E58663 /* House3.png in Resources */,
 				A31B6AC220CAF81C0071090A /* Left.png in Resources */,
 				A367C99020C146AB0065D939 /* Actions.sks in Resources */,
 				A31B6AAE20CA9DB00071090A /* SpaceRocket.png in Resources */,
@@ -355,8 +377,10 @@
 				A31B6AC020CAF81C0071090A /* Up.png in Resources */,
 				A3DAFF9720C44DB8008F3606 /* Background.png in Resources */,
 				A31B6AD320CBF7590071090A /* HouseBar.png in Resources */,
+				E0154DC820CED5EC00E58663 /* House5.png in Resources */,
 				A31B6AB420CAA7620071090A /* Screen.png in Resources */,
 				A367C9AC20C153D40065D939 /* Police.png in Resources */,
+				E0154DC920CED5EC00E58663 /* House2.png in Resources */,
 				A367C99920C146AB0065D939 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,11 +395,14 @@
 				A367C9AA20C14BCF0065D939 /* Rocket.png in Resources */,
 				A367C98020C146AB0065D939 /* Main.storyboard in Resources */,
 				A367C99420C146AB0065D939 /* GameScene.sks in Resources */,
+				E0154DD020CED5F200E58663 /* House4.png in Resources */,
 				A31B6AC620CAF8250071090A /* Left.png in Resources */,
 				A31B6AB520CAA78E0071090A /* Screen.png in Resources */,
 				A31B6AD920CBF84A0071090A /* HouseBar.png in Resources */,
 				A31B6AE120CBF8520071090A /* PoliceRun.png in Resources */,
 				A31B6AAF20CA9DC30071090A /* House.png in Resources */,
+				E0154DCE20CED5F200E58663 /* House2.png in Resources */,
+				E0154DCF20CED5F200E58663 /* House3.png in Resources */,
 				A31B6AC520CAF8250071090A /* Right.png in Resources */,
 				A31B6AC420CAF8250071090A /* Back.png in Resources */,
 				A367C9AD20C153EA0065D939 /* Police.png in Resources */,
@@ -384,6 +411,7 @@
 				A367C99A20C146AB0065D939 /* Assets.xcassets in Resources */,
 				A39588D320C44E8100732803 /* Background.png in Resources */,
 				A31B6ADB20CBF84A0071090A /* HouseSale.png in Resources */,
+				E0154DD120CED5F200E58663 /* House5.png in Resources */,
 				A31B6ADF20CBF84F0071090A /* RocketRun.png in Resources */,
 				A367C99120C146AB0065D939 /* Actions.sks in Resources */,
 				A367C9B120C159A90065D939 /* BackgroundForTurbo.png in Resources */,
@@ -400,11 +428,14 @@
 				A367C9A920C14BCE0065D939 /* Rocket.png in Resources */,
 				A367C98E20C146AB0065D939 /* Main.storyboard in Resources */,
 				A367C99520C146AB0065D939 /* GameScene.sks in Resources */,
+				E0154DCC20CED5F200E58663 /* House4.png in Resources */,
 				A31B6ACA20CAF8260071090A /* Left.png in Resources */,
 				A31B6AB620CAA78F0071090A /* Screen.png in Resources */,
 				A31B6ADC20CBF84B0071090A /* HouseBar.png in Resources */,
 				A31B6AE220CBF8520071090A /* PoliceRun.png in Resources */,
 				A31B6AB020CA9DC40071090A /* House.png in Resources */,
+				E0154DCA20CED5F200E58663 /* House2.png in Resources */,
+				E0154DCB20CED5F200E58663 /* House3.png in Resources */,
 				A31B6AC920CAF8260071090A /* Right.png in Resources */,
 				A31B6AC820CAF8260071090A /* Back.png in Resources */,
 				A367C9AE20C153EB0065D939 /* Police.png in Resources */,
@@ -413,6 +444,7 @@
 				A367C99B20C146AB0065D939 /* Assets.xcassets in Resources */,
 				A39588D420C44E8100732803 /* Background.png in Resources */,
 				A31B6ADE20CBF84B0071090A /* HouseSale.png in Resources */,
+				E0154DCD20CED5F200E58663 /* House5.png in Resources */,
 				A31B6AE020CBF84F0071090A /* RocketRun.png in Resources */,
 				A367C99220C146AB0065D939 /* Actions.sks in Resources */,
 				A367C9B220C159A90065D939 /* BackgroundForTurbo.png in Resources */,

@@ -28,6 +28,8 @@ func random(_ min: CGFloat, max: CGFloat) -> CGFloat {
 
 public var rocket = SKSpriteNode(imageNamed: "Rocket.png")
 public var police = SKSpriteNode(imageNamed: "Police.png")
+public var police2 = SKSpriteNode(imageNamed: "Police.png")
+public var police3 = SKSpriteNode(imageNamed: "Police.png")
 public var earth = SKSpriteNode(imageNamed: "House.png")
 public var stop = SKSpriteNode(imageNamed: "Stop.png")
 public var background1 = SKSpriteNode(imageNamed: "Background.png")
@@ -36,19 +38,33 @@ public var background3 = SKSpriteNode(imageNamed: "Background.png")
 public var background4 = SKSpriteNode(imageNamed: "Background.png")
 public var cam: SKCameraNode?
 
+
 public var deltaX = CGFloat(150)
 public var deltaY = CGFloat(300)
 public var oldDeltaX = CGFloat(0)
 public var oldDeltaY = CGFloat(0)
+
+
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
    
     var pulse = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.1)
     var policeAction = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.01)
+    var policeAction2 = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.01)
+    var policeAction3 = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.01)
     var cameraLocateAction = SKAction.move(to: CGPoint(x: 0, y: 0), duration: 0.1)
+    var crash = 100
+    var label1 = SKLabelNode()
     
-    
+    func checkCrash() {
+        crash = crash - 1
+        label1.text = "❤️: \(crash)"
+        if crash <= 0 {
+            self.isPaused = true
+            label1.text = "Oh, shit! Fucking cops had you"
+        }
+    }
     func rotaionAction(input: String){
         var k: CGFloat
         k = 1.0
@@ -76,6 +92,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         rocket.run(rotateAction)
         rocket.run(pulse)
         police.zRotation = rocket.zRotation
+        police2.zRotation = rocket.zRotation
+        police3.zRotation = rocket.zRotation
         
     }
     
@@ -104,8 +122,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         rocket.childNode(withName: "Rocket")
         rocket.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
         rocket.zPosition = 10.0
-        rocket.xScale = 0.9
-        rocket.yScale = 0.9
+        rocket.xScale = 0.65
+        rocket.yScale = 0.65
         
         rocket.physicsBody = SKPhysicsBody(texture: rocket.texture!, size: rocket.size)
         rocket.physicsBody?.isDynamic = true
@@ -123,9 +141,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         police.physicsBody = SKPhysicsBody(texture: police.texture!, size: police.size)
         police.physicsBody?.isDynamic = true
         police.physicsBody?.categoryBitMask = PhysicsCategory.Police
-        police.physicsBody?.contactTestBitMask = PhysicsCategory.Earth | PhysicsCategory.Rocket | PhysicsCategory.Meteor
-        police.physicsBody?.collisionBitMask = PhysicsCategory.Earth | PhysicsCategory.Rocket | PhysicsCategory.Meteor
+        police.physicsBody?.contactTestBitMask = PhysicsCategory.Earth | PhysicsCategory.Rocket | PhysicsCategory.Meteor | PhysicsCategory.Police
+        police.physicsBody?.collisionBitMask = PhysicsCategory.Earth | PhysicsCategory.Rocket | PhysicsCategory.Meteor | PhysicsCategory.Police
         police.shadowedBitMask = 0
+        
+        police2.name = "Police"
+        police2.zPosition = 10.0
+        police2.xScale = 0.9
+        police2.yScale = 0.9
+        
+        police2.physicsBody = SKPhysicsBody(texture: police.texture!, size: police.size)
+        police2.physicsBody?.isDynamic = true
+        police2.physicsBody?.categoryBitMask = PhysicsCategory.Police
+        police2.physicsBody?.contactTestBitMask = PhysicsCategory.Earth | PhysicsCategory.Rocket | PhysicsCategory.Meteor | PhysicsCategory.Police
+        police2.physicsBody?.collisionBitMask = PhysicsCategory.Earth | PhysicsCategory.Rocket | PhysicsCategory.Meteor | PhysicsCategory.Police
+        police2.shadowedBitMask = 0
+        
+        police3.name = "Police"
+        police3.position = CGPoint(x: rocket.position.x - 400, y: rocket.position.y)
+        police3.zPosition = 10.0
+        police3.xScale = 0.9
+        police3.yScale = 0.9
+        
+        police3.physicsBody = SKPhysicsBody(texture: police.texture!, size: police.size)
+        police3.physicsBody?.isDynamic = true
+        police3.physicsBody?.categoryBitMask = PhysicsCategory.Police
+        police3.physicsBody?.contactTestBitMask = PhysicsCategory.Earth | PhysicsCategory.Rocket | PhysicsCategory.Meteor | PhysicsCategory.Police
+        police3.physicsBody?.collisionBitMask = PhysicsCategory.Earth | PhysicsCategory.Rocket | PhysicsCategory.Meteor | PhysicsCategory.Police
+        police3.shadowedBitMask = 0
         
         earth.name = "Earth"
         earth.position = CGPoint(x: self.frame.midX - 600, y: self.frame.midY)
@@ -170,19 +213,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         background4.xScale = 3.0
         background4.yScale = 3.0
         
+        label1.text = "❤️: \(crash)"
+        label1.fontSize = 20
+        label1.fontColor = SKColor.white
+        label1.fontName = "Helveretica Bold"
+        label1.zPosition = 30
+        label1.position = CGPoint(x: rocket.position.x,  y: rocket.position.y + 200)
+        label1.isHidden = false
+        
+        
         cam = SKCameraNode()
         self.camera = cam
-        
-       // self.addChild(background1)
-       // self.addChild(background2)
-       // self.addChild(background3)
-        //self.addChild(background4)
+    
         self.addChild(cam!)
         self.addChild(rocket)
         self.addChild(police)
         self.addChild(earth)
         self.addChild(stop)
-        
+        self.addChild(police2)
+        self.addChild(police3)
+        self.addChild(label1)
         
         var xPos = -6000
         var yPos = 6000
@@ -202,31 +252,89 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     earth.position = CGPoint(x: xPos,y: yPos)
             }
             
-            if (random > 5) && (random <= 8){
+            if random == 6{
                     self.addChild(earth.copy() as! SKNode)
-                    earth.texture = SKTexture(imageNamed: "HouseSale.png")
-                    //earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
+                    earth.texture = SKTexture(imageNamed: "House2.png")
                     earth.position = CGPoint(x: xPos,y: yPos)
+                    earth.zRotation = 0.0
             }
-            if (random > 8) && (random <= 13){
+            if random == 7{
                 self.addChild(earth.copy() as! SKNode)
-                earth.texture = SKTexture(imageNamed: "HouseBar.png")
-                //earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
+                earth.texture = SKTexture(imageNamed: "House2.png")
                 earth.position = CGPoint(x: xPos,y: yPos)
+                earth.zRotation = CGFloat.pi/2
             }
-            if (random > 13) && (random <= 15) {
+            if random == 8{
                 self.addChild(earth.copy() as! SKNode)
-                earth.texture = SKTexture(imageNamed: "HouseCinema.png")
-                //earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
+                earth.texture = SKTexture(imageNamed: "House2.png")
                 earth.position = CGPoint(x: xPos,y: yPos)
+                earth.zRotation = CGFloat.pi
             }
-               
+            if random == 9{
+                self.addChild(earth.copy() as! SKNode)
+                earth.texture = SKTexture(imageNamed: "House3.png")
+                earth.position = CGPoint(x: xPos,y: yPos)
+                earth.zRotation = 0.0
+            }
+            if random == 10{
+                self.addChild(earth.copy() as! SKNode)
+                earth.texture = SKTexture(imageNamed: "House3.png")
+                earth.position = CGPoint(x: xPos,y: yPos)
+                earth.zRotation = CGFloat.pi/2
+            }
+            if random == 11{
+                self.addChild(earth.copy() as! SKNode)
+                earth.texture = SKTexture(imageNamed: "House3.png")
+                earth.position = CGPoint(x: xPos,y: yPos)
+                earth.zRotation = CGFloat.pi
+            }
+            if random == 12{
+                self.addChild(earth.copy() as! SKNode)
+                earth.texture = SKTexture(imageNamed: "House4.png")
+                earth.position = CGPoint(x: xPos,y: yPos)
+                earth.zRotation = 0.0
+            }
+            if random == 13{
+                self.addChild(earth.copy() as! SKNode)
+                earth.texture = SKTexture(imageNamed: "House4.png")
+                earth.position = CGPoint(x: xPos,y: yPos)
+                earth.zRotation = CGFloat.pi/2
+            }
+            if random == 14{
+                self.addChild(earth.copy() as! SKNode)
+                earth.texture = SKTexture(imageNamed: "House4.png")
+                earth.position = CGPoint(x: xPos,y: yPos)
+                earth.zRotation = CGFloat.pi
+            }
+            if random == 15{
+                self.addChild(earth.copy() as! SKNode)
+                earth.texture = SKTexture(imageNamed: "House5.png")
+                earth.position = CGPoint(x: xPos,y: yPos)
+                earth.zRotation = 0.0
+            }
+            if random == 16{
+                self.addChild(earth.copy() as! SKNode)
+                earth.texture = SKTexture(imageNamed: "House5.png")
+                earth.position = CGPoint(x: xPos,y: yPos)
+                earth.zRotation = CGFloat.pi/2
+            }
+            if random == 17{
+                self.addChild(earth.copy() as! SKNode)
+                earth.texture = SKTexture(imageNamed: "House5.png")
+                earth.position = CGPoint(x: xPos,y: yPos)
+                earth.zRotation = CGFloat.pi
+            }
             
-                if random == 16 {
-                    print(random)
-                    self.addChild(stop.copy() as! SKNode)
-                    stop.position = CGPoint(x: xPos,y: yPos)
-                }
+            if random == 18 {
+                self.addChild(stop.copy() as! SKNode)
+                stop.position = CGPoint(x: xPos,y: yPos)
+            }
+            if random == 19 {
+                police2.position = CGPoint(x: xPos, y: yPos)
+            }
+            if random == 20 {
+                police3.position = CGPoint(x: -xPos, y: -yPos)
+            }
             xPos = xPos + 150
             if xPos > 6000 {
                 xPos = -6000
@@ -235,7 +343,44 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         print(counter)
     }
-    
+    func didBegin(_ contact: SKPhysicsContact) {
+        
+        var firstBody: SKPhysicsBody
+        var secondBody: SKPhysicsBody
+        
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+            
+        } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+        func rocketDidCollideWithPolice(rocket:SKSpriteNode, police:SKSpriteNode) {
+            checkCrash()
+        }
+        func rocketDidCollideWithPolice2(rocket:SKSpriteNode, police2:SKSpriteNode) {
+            checkCrash()
+        }
+        func rocketDidCollideWithPolice3(rocket:SKSpriteNode, police3:SKSpriteNode) {
+            checkCrash()
+        }
+        if ((firstBody.categoryBitMask & PhysicsCategory.Rocket != 0) &&
+            (secondBody.categoryBitMask & PhysicsCategory.Police != 0)) {
+            rocketDidCollideWithPolice(rocket: firstBody.node as! SKSpriteNode, police: secondBody.node as! SKSpriteNode)
+        }
+        
+        if ((firstBody.categoryBitMask & PhysicsCategory.Rocket != 0) &&
+            (secondBody.categoryBitMask & PhysicsCategory.Police != 0)) {
+            rocketDidCollideWithPolice2(rocket: firstBody.node as! SKSpriteNode, police2: secondBody.node as! SKSpriteNode)
+        }
+        
+        if ((firstBody.categoryBitMask & PhysicsCategory.Rocket != 0) &&
+            (secondBody.categoryBitMask & PhysicsCategory.Police != 0)) {
+            rocketDidCollideWithPolice3(rocket: firstBody.node as! SKSpriteNode, police3: secondBody.node as! SKSpriteNode)
+        }
+        
+    }
     #if os(watchOS)
     override func sceneDidLoad() {
         self.setUpScene()
@@ -254,6 +399,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         background3.position = CGPoint(x: rocket.position.x - 250, y: rocket.position.y - 250)
         background4.position = CGPoint(x: rocket.position.x + 250, y: rocket.position.y - 250)
         
+        label1.position = CGPoint(x: rocket.position.x,  y: rocket.position.y + 200)
         cam?.position = rocket.position
        //cam?.zRotation = rocket.zRotation
     }
@@ -334,9 +480,17 @@ extension GameScene {
             police.physicsBody?.angularVelocity = 0.0
             police.run(policeAction)
             
-           
-           
+            policeAction2 = SKAction.applyImpulse(CGVector(dx: (rocket.position.x - police2.position.x)/100, dy: (rocket.position.y - police2.position.y)/100), duration: 1.0)
+            police2.physicsBody?.angularVelocity = 0.0
+            police2.run(policeAction2)
             
+            policeAction3 = SKAction.applyImpulse(CGVector(dx: (rocket.position.x - police3.position.x)/100, dy: (rocket.position.y - police3.position.y)/100), duration: 1.0)
+            police3.physicsBody?.angularVelocity = 0.0
+            police3.run(policeAction3)
+            
+            police.run(SKAction.animate(with: [SKTexture(imageNamed: "PoliceRun.png")], timePerFrame: 0.02, resize: false, restore: true))
+            police2.run(SKAction.animate(with: [SKTexture(imageNamed: "PoliceRun.png")], timePerFrame: 0.02, resize: false, restore: true))
+            police3.run(SKAction.animate(with: [SKTexture(imageNamed: "PoliceRun.png")], timePerFrame: 0.02, resize: false, restore: true))
             
         }
     }
