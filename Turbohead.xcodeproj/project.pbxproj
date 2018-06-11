@@ -1,0 +1,770 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A31B6AAD20CA9DB00071090A /* House.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6AAB20CA9DAF0071090A /* House.png */; };
+		A31B6AAE20CA9DB00071090A /* SpaceRocket.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6AAC20CA9DAF0071090A /* SpaceRocket.png */; };
+		A31B6AAF20CA9DC30071090A /* House.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6AAB20CA9DAF0071090A /* House.png */; };
+		A31B6AB020CA9DC40071090A /* House.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6AAB20CA9DAF0071090A /* House.png */; };
+		A31B6AB120CA9DC70071090A /* SpaceRocket.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6AAC20CA9DAF0071090A /* SpaceRocket.png */; };
+		A31B6AB220CA9DC70071090A /* SpaceRocket.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6AAC20CA9DAF0071090A /* SpaceRocket.png */; };
+		A31B6AB420CAA7620071090A /* Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6AB320CAA7610071090A /* Screen.png */; };
+		A31B6AB520CAA78E0071090A /* Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6AB320CAA7610071090A /* Screen.png */; };
+		A31B6AB620CAA78F0071090A /* Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6AB320CAA7610071090A /* Screen.png */; };
+		A31B6ABF20CAF81C0071090A /* Back.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6ABB20CAF81B0071090A /* Back.png */; };
+		A31B6AC020CAF81C0071090A /* Up.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6ABC20CAF81B0071090A /* Up.png */; };
+		A31B6AC120CAF81C0071090A /* Right.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6ABD20CAF81B0071090A /* Right.png */; };
+		A31B6AC220CAF81C0071090A /* Left.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6ABE20CAF81C0071090A /* Left.png */; };
+		A31B6AC320CAF8250071090A /* Up.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6ABC20CAF81B0071090A /* Up.png */; };
+		A31B6AC420CAF8250071090A /* Back.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6ABB20CAF81B0071090A /* Back.png */; };
+		A31B6AC520CAF8250071090A /* Right.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6ABD20CAF81B0071090A /* Right.png */; };
+		A31B6AC620CAF8250071090A /* Left.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6ABE20CAF81C0071090A /* Left.png */; };
+		A31B6AC720CAF8260071090A /* Up.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6ABC20CAF81B0071090A /* Up.png */; };
+		A31B6AC820CAF8260071090A /* Back.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6ABB20CAF81B0071090A /* Back.png */; };
+		A31B6AC920CAF8260071090A /* Right.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6ABD20CAF81B0071090A /* Right.png */; };
+		A31B6ACA20CAF8260071090A /* Left.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6ABE20CAF81C0071090A /* Left.png */; };
+		A31B6ACC20CAFB5A0071090A /* Stop.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6ACB20CAFB5A0071090A /* Stop.png */; };
+		A31B6ACD20CAFCA40071090A /* Stop.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6ACB20CAFB5A0071090A /* Stop.png */; };
+		A31B6ACE20CAFCA50071090A /* Stop.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6ACB20CAFB5A0071090A /* Stop.png */; };
+		A31B6AD220CBF7580071090A /* HouseCinema.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6ACF20CBF7550071090A /* HouseCinema.png */; };
+		A31B6AD320CBF7590071090A /* HouseBar.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6AD020CBF7560071090A /* HouseBar.png */; };
+		A31B6AD420CBF7590071090A /* HouseSale.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6AD120CBF7570071090A /* HouseSale.png */; };
+		A31B6AD620CBF76A0071090A /* PoliceRun.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6AD520CBF76A0071090A /* PoliceRun.png */; };
+		A31B6AD820CBF7750071090A /* RocketRun.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6AD720CBF7740071090A /* RocketRun.png */; };
+		A31B6AD920CBF84A0071090A /* HouseBar.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6AD020CBF7560071090A /* HouseBar.png */; };
+		A31B6ADA20CBF84A0071090A /* HouseCinema.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6ACF20CBF7550071090A /* HouseCinema.png */; };
+		A31B6ADB20CBF84A0071090A /* HouseSale.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6AD120CBF7570071090A /* HouseSale.png */; };
+		A31B6ADC20CBF84B0071090A /* HouseBar.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6AD020CBF7560071090A /* HouseBar.png */; };
+		A31B6ADD20CBF84B0071090A /* HouseCinema.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6ACF20CBF7550071090A /* HouseCinema.png */; };
+		A31B6ADE20CBF84B0071090A /* HouseSale.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6AD120CBF7570071090A /* HouseSale.png */; };
+		A31B6ADF20CBF84F0071090A /* RocketRun.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6AD720CBF7740071090A /* RocketRun.png */; };
+		A31B6AE020CBF84F0071090A /* RocketRun.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6AD720CBF7740071090A /* RocketRun.png */; };
+		A31B6AE120CBF8520071090A /* PoliceRun.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6AD520CBF76A0071090A /* PoliceRun.png */; };
+		A31B6AE220CBF8520071090A /* PoliceRun.png in Resources */ = {isa = PBXBuildFile; fileRef = A31B6AD520CBF76A0071090A /* PoliceRun.png */; };
+		A367C96A20C146AB0065D939 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A367C96920C146AB0065D939 /* AppDelegate.swift */; };
+		A367C96C20C146AB0065D939 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A367C96B20C146AB0065D939 /* GameViewController.swift */; };
+		A367C96F20C146AB0065D939 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A367C96D20C146AB0065D939 /* Main.storyboard */; };
+		A367C97220C146AB0065D939 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A367C97020C146AB0065D939 /* LaunchScreen.storyboard */; };
+		A367C97B20C146AB0065D939 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A367C97A20C146AB0065D939 /* AppDelegate.swift */; };
+		A367C97D20C146AB0065D939 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A367C97C20C146AB0065D939 /* GameViewController.swift */; };
+		A367C98020C146AB0065D939 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A367C97E20C146AB0065D939 /* Main.storyboard */; };
+		A367C98920C146AB0065D939 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A367C98820C146AB0065D939 /* AppDelegate.swift */; };
+		A367C98B20C146AB0065D939 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A367C98A20C146AB0065D939 /* GameViewController.swift */; };
+		A367C98E20C146AB0065D939 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A367C98C20C146AB0065D939 /* Main.storyboard */; };
+		A367C99020C146AB0065D939 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A367C95E20C146A30065D939 /* Actions.sks */; };
+		A367C99120C146AB0065D939 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A367C95E20C146A30065D939 /* Actions.sks */; };
+		A367C99220C146AB0065D939 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A367C95E20C146A30065D939 /* Actions.sks */; };
+		A367C99320C146AB0065D939 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A367C95F20C146A30065D939 /* GameScene.sks */; };
+		A367C99420C146AB0065D939 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A367C95F20C146A30065D939 /* GameScene.sks */; };
+		A367C99520C146AB0065D939 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A367C95F20C146A30065D939 /* GameScene.sks */; };
+		A367C99620C146AB0065D939 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A367C96020C146A30065D939 /* GameScene.swift */; };
+		A367C99720C146AB0065D939 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A367C96020C146A30065D939 /* GameScene.swift */; };
+		A367C99820C146AB0065D939 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A367C96020C146A30065D939 /* GameScene.swift */; };
+		A367C99920C146AB0065D939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A367C96120C146AB0065D939 /* Assets.xcassets */; };
+		A367C99A20C146AB0065D939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A367C96120C146AB0065D939 /* Assets.xcassets */; };
+		A367C99B20C146AB0065D939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A367C96120C146AB0065D939 /* Assets.xcassets */; };
+		A367C9A820C147CC0065D939 /* Rocket.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9A720C147CC0065D939 /* Rocket.png */; };
+		A367C9A920C14BCE0065D939 /* Rocket.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9A720C147CC0065D939 /* Rocket.png */; };
+		A367C9AA20C14BCF0065D939 /* Rocket.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9A720C147CC0065D939 /* Rocket.png */; };
+		A367C9AC20C153D40065D939 /* Police.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9AB20C153D40065D939 /* Police.png */; };
+		A367C9AD20C153EA0065D939 /* Police.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9AB20C153D40065D939 /* Police.png */; };
+		A367C9AE20C153EB0065D939 /* Police.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9AB20C153D40065D939 /* Police.png */; };
+		A367C9B020C158AC0065D939 /* BackgroundForTurbo.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9AF20C158AC0065D939 /* BackgroundForTurbo.png */; };
+		A367C9B120C159A90065D939 /* BackgroundForTurbo.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9AF20C158AC0065D939 /* BackgroundForTurbo.png */; };
+		A367C9B220C159A90065D939 /* BackgroundForTurbo.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9AF20C158AC0065D939 /* BackgroundForTurbo.png */; };
+		A367C9B420C160810065D939 /* Earth.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9B320C160810065D939 /* Earth.png */; };
+		A367C9B520C160850065D939 /* Earth.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9B320C160810065D939 /* Earth.png */; };
+		A367C9B620C160850065D939 /* Earth.png in Resources */ = {isa = PBXBuildFile; fileRef = A367C9B320C160810065D939 /* Earth.png */; };
+		A39588D320C44E8100732803 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = A3DAFF9620C44DB8008F3606 /* Background.png */; };
+		A39588D420C44E8100732803 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = A3DAFF9620C44DB8008F3606 /* Background.png */; };
+		A3DAFF9720C44DB8008F3606 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = A3DAFF9620C44DB8008F3606 /* Background.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A31B6AAB20CA9DAF0071090A /* House.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = House.png; sourceTree = SOURCE_ROOT; };
+		A31B6AAC20CA9DAF0071090A /* SpaceRocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SpaceRocket.png; sourceTree = SOURCE_ROOT; };
+		A31B6AB320CAA7610071090A /* Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screen.png; sourceTree = SOURCE_ROOT; };
+		A31B6ABB20CAF81B0071090A /* Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back.png; sourceTree = SOURCE_ROOT; };
+		A31B6ABC20CAF81B0071090A /* Up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Up.png; sourceTree = SOURCE_ROOT; };
+		A31B6ABD20CAF81B0071090A /* Right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Right.png; sourceTree = SOURCE_ROOT; };
+		A31B6ABE20CAF81C0071090A /* Left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Left.png; sourceTree = SOURCE_ROOT; };
+		A31B6ACB20CAFB5A0071090A /* Stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stop.png; sourceTree = SOURCE_ROOT; };
+		A31B6ACF20CBF7550071090A /* HouseCinema.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HouseCinema.png; sourceTree = SOURCE_ROOT; };
+		A31B6AD020CBF7560071090A /* HouseBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HouseBar.png; sourceTree = SOURCE_ROOT; };
+		A31B6AD120CBF7570071090A /* HouseSale.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HouseSale.png; sourceTree = SOURCE_ROOT; };
+		A31B6AD520CBF76A0071090A /* PoliceRun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PoliceRun.png; sourceTree = SOURCE_ROOT; };
+		A31B6AD720CBF7740071090A /* RocketRun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RocketRun.png; sourceTree = SOURCE_ROOT; };
+		A367C95E20C146A30065D939 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		A367C95F20C146A30065D939 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		A367C96020C146A30065D939 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		A367C96120C146AB0065D939 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A367C96620C146AB0065D939 /* Turbohead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Turbohead.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A367C96920C146AB0065D939 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A367C96B20C146AB0065D939 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		A367C96E20C146AB0065D939 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A367C97120C146AB0065D939 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A367C97320C146AB0065D939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A367C97820C146AB0065D939 /* Turbohead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Turbohead.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A367C97A20C146AB0065D939 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A367C97C20C146AB0065D939 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		A367C97F20C146AB0065D939 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A367C98120C146AB0065D939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A367C98620C146AB0065D939 /* Turbohead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Turbohead.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A367C98820C146AB0065D939 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A367C98A20C146AB0065D939 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		A367C98D20C146AB0065D939 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A367C98F20C146AB0065D939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A367C9A720C147CC0065D939 /* Rocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rocket.png; sourceTree = SOURCE_ROOT; };
+		A367C9AB20C153D40065D939 /* Police.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Police.png; sourceTree = SOURCE_ROOT; };
+		A367C9AF20C158AC0065D939 /* BackgroundForTurbo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundForTurbo.png; sourceTree = SOURCE_ROOT; };
+		A367C9B320C160810065D939 /* Earth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Earth.png; sourceTree = SOURCE_ROOT; };
+		A3DAFF9620C44DB8008F3606 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A367C96320C146AB0065D939 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A367C97520C146AB0065D939 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A367C98320C146AB0065D939 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A367C95820C146A30065D939 = {
+			isa = PBXGroup;
+			children = (
+				A367C95D20C146A30065D939 /* Turbohead Shared */,
+				A367C96820C146AB0065D939 /* Turbohead iOS */,
+				A367C97920C146AB0065D939 /* Turbohead tvOS */,
+				A367C98720C146AB0065D939 /* Turbohead macOS */,
+				A367C96720C146AB0065D939 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A367C95D20C146A30065D939 /* Turbohead Shared */ = {
+			isa = PBXGroup;
+			children = (
+				A367C95E20C146A30065D939 /* Actions.sks */,
+				A367C95F20C146A30065D939 /* GameScene.sks */,
+				A367C96020C146A30065D939 /* GameScene.swift */,
+				A367C96120C146AB0065D939 /* Assets.xcassets */,
+				A31B6AD020CBF7560071090A /* HouseBar.png */,
+				A31B6ACF20CBF7550071090A /* HouseCinema.png */,
+				A31B6AD120CBF7570071090A /* HouseSale.png */,
+				A31B6ACB20CAFB5A0071090A /* Stop.png */,
+				A31B6ABC20CAF81B0071090A /* Up.png */,
+				A31B6ABB20CAF81B0071090A /* Back.png */,
+				A31B6ABD20CAF81B0071090A /* Right.png */,
+				A31B6ABE20CAF81C0071090A /* Left.png */,
+				A31B6AB320CAA7610071090A /* Screen.png */,
+				A31B6AAB20CA9DAF0071090A /* House.png */,
+				A31B6AAC20CA9DAF0071090A /* SpaceRocket.png */,
+				A367C9A720C147CC0065D939 /* Rocket.png */,
+				A31B6AD720CBF7740071090A /* RocketRun.png */,
+				A367C9AB20C153D40065D939 /* Police.png */,
+				A31B6AD520CBF76A0071090A /* PoliceRun.png */,
+				A367C9AF20C158AC0065D939 /* BackgroundForTurbo.png */,
+				A3DAFF9620C44DB8008F3606 /* Background.png */,
+				A367C9B320C160810065D939 /* Earth.png */,
+			);
+			path = "Turbohead Shared";
+			sourceTree = "<group>";
+		};
+		A367C96720C146AB0065D939 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A367C96620C146AB0065D939 /* Turbohead.app */,
+				A367C97820C146AB0065D939 /* Turbohead.app */,
+				A367C98620C146AB0065D939 /* Turbohead.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A367C96820C146AB0065D939 /* Turbohead iOS */ = {
+			isa = PBXGroup;
+			children = (
+				A367C96920C146AB0065D939 /* AppDelegate.swift */,
+				A367C96B20C146AB0065D939 /* GameViewController.swift */,
+				A367C96D20C146AB0065D939 /* Main.storyboard */,
+				A367C97020C146AB0065D939 /* LaunchScreen.storyboard */,
+				A367C97320C146AB0065D939 /* Info.plist */,
+			);
+			path = "Turbohead iOS";
+			sourceTree = "<group>";
+		};
+		A367C97920C146AB0065D939 /* Turbohead tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				A367C97A20C146AB0065D939 /* AppDelegate.swift */,
+				A367C97C20C146AB0065D939 /* GameViewController.swift */,
+				A367C97E20C146AB0065D939 /* Main.storyboard */,
+				A367C98120C146AB0065D939 /* Info.plist */,
+			);
+			path = "Turbohead tvOS";
+			sourceTree = "<group>";
+		};
+		A367C98720C146AB0065D939 /* Turbohead macOS */ = {
+			isa = PBXGroup;
+			children = (
+				A367C98820C146AB0065D939 /* AppDelegate.swift */,
+				A367C98A20C146AB0065D939 /* GameViewController.swift */,
+				A367C98C20C146AB0065D939 /* Main.storyboard */,
+				A367C98F20C146AB0065D939 /* Info.plist */,
+			);
+			path = "Turbohead macOS";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A367C96520C146AB0065D939 /* Turbohead iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A367C99E20C146AB0065D939 /* Build configuration list for PBXNativeTarget "Turbohead iOS" */;
+			buildPhases = (
+				A367C96220C146AB0065D939 /* Sources */,
+				A367C96320C146AB0065D939 /* Frameworks */,
+				A367C96420C146AB0065D939 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Turbohead iOS";
+			productName = "Turbohead iOS";
+			productReference = A367C96620C146AB0065D939 /* Turbohead.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A367C97720C146AB0065D939 /* Turbohead tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A367C9A120C146AB0065D939 /* Build configuration list for PBXNativeTarget "Turbohead tvOS" */;
+			buildPhases = (
+				A367C97420C146AB0065D939 /* Sources */,
+				A367C97520C146AB0065D939 /* Frameworks */,
+				A367C97620C146AB0065D939 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Turbohead tvOS";
+			productName = "Turbohead tvOS";
+			productReference = A367C97820C146AB0065D939 /* Turbohead.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A367C98520C146AB0065D939 /* Turbohead macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A367C9A420C146AB0065D939 /* Build configuration list for PBXNativeTarget "Turbohead macOS" */;
+			buildPhases = (
+				A367C98220C146AB0065D939 /* Sources */,
+				A367C98320C146AB0065D939 /* Frameworks */,
+				A367C98420C146AB0065D939 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Turbohead macOS";
+			productName = "Turbohead macOS";
+			productReference = A367C98620C146AB0065D939 /* Turbohead.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A367C95920C146A30065D939 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Tema Sysoev";
+				TargetAttributes = {
+					A367C96520C146AB0065D939 = {
+						CreatedOnToolsVersion = 9.4;
+					};
+					A367C97720C146AB0065D939 = {
+						CreatedOnToolsVersion = 9.4;
+					};
+					A367C98520C146AB0065D939 = {
+						CreatedOnToolsVersion = 9.4;
+					};
+				};
+			};
+			buildConfigurationList = A367C95C20C146A30065D939 /* Build configuration list for PBXProject "Turbohead" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A367C95820C146A30065D939;
+			productRefGroup = A367C96720C146AB0065D939 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A367C96520C146AB0065D939 /* Turbohead iOS */,
+				A367C97720C146AB0065D939 /* Turbohead tvOS */,
+				A367C98520C146AB0065D939 /* Turbohead macOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A367C96420C146AB0065D939 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A367C99320C146AB0065D939 /* GameScene.sks in Resources */,
+				A367C9A820C147CC0065D939 /* Rocket.png in Resources */,
+				A31B6AAD20CA9DB00071090A /* House.png in Resources */,
+				A367C96F20C146AB0065D939 /* Main.storyboard in Resources */,
+				A367C9B420C160810065D939 /* Earth.png in Resources */,
+				A31B6AC220CAF81C0071090A /* Left.png in Resources */,
+				A367C99020C146AB0065D939 /* Actions.sks in Resources */,
+				A31B6AAE20CA9DB00071090A /* SpaceRocket.png in Resources */,
+				A367C9B020C158AC0065D939 /* BackgroundForTurbo.png in Resources */,
+				A31B6AD620CBF76A0071090A /* PoliceRun.png in Resources */,
+				A31B6ACC20CAFB5A0071090A /* Stop.png in Resources */,
+				A31B6ABF20CAF81C0071090A /* Back.png in Resources */,
+				A367C97220C146AB0065D939 /* LaunchScreen.storyboard in Resources */,
+				A31B6AD820CBF7750071090A /* RocketRun.png in Resources */,
+				A31B6AC120CAF81C0071090A /* Right.png in Resources */,
+				A31B6AD420CBF7590071090A /* HouseSale.png in Resources */,
+				A31B6AD220CBF7580071090A /* HouseCinema.png in Resources */,
+				A31B6AC020CAF81C0071090A /* Up.png in Resources */,
+				A3DAFF9720C44DB8008F3606 /* Background.png in Resources */,
+				A31B6AD320CBF7590071090A /* HouseBar.png in Resources */,
+				A31B6AB420CAA7620071090A /* Screen.png in Resources */,
+				A367C9AC20C153D40065D939 /* Police.png in Resources */,
+				A367C99920C146AB0065D939 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A367C97620C146AB0065D939 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A31B6AC320CAF8250071090A /* Up.png in Resources */,
+				A31B6AB120CA9DC70071090A /* SpaceRocket.png in Resources */,
+				A367C9B520C160850065D939 /* Earth.png in Resources */,
+				A367C9AA20C14BCF0065D939 /* Rocket.png in Resources */,
+				A367C98020C146AB0065D939 /* Main.storyboard in Resources */,
+				A367C99420C146AB0065D939 /* GameScene.sks in Resources */,
+				A31B6AC620CAF8250071090A /* Left.png in Resources */,
+				A31B6AB520CAA78E0071090A /* Screen.png in Resources */,
+				A31B6AD920CBF84A0071090A /* HouseBar.png in Resources */,
+				A31B6AE120CBF8520071090A /* PoliceRun.png in Resources */,
+				A31B6AAF20CA9DC30071090A /* House.png in Resources */,
+				A31B6AC520CAF8250071090A /* Right.png in Resources */,
+				A31B6AC420CAF8250071090A /* Back.png in Resources */,
+				A367C9AD20C153EA0065D939 /* Police.png in Resources */,
+				A31B6ADA20CBF84A0071090A /* HouseCinema.png in Resources */,
+				A31B6ACD20CAFCA40071090A /* Stop.png in Resources */,
+				A367C99A20C146AB0065D939 /* Assets.xcassets in Resources */,
+				A39588D320C44E8100732803 /* Background.png in Resources */,
+				A31B6ADB20CBF84A0071090A /* HouseSale.png in Resources */,
+				A31B6ADF20CBF84F0071090A /* RocketRun.png in Resources */,
+				A367C99120C146AB0065D939 /* Actions.sks in Resources */,
+				A367C9B120C159A90065D939 /* BackgroundForTurbo.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A367C98420C146AB0065D939 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A31B6AC720CAF8260071090A /* Up.png in Resources */,
+				A31B6AB220CA9DC70071090A /* SpaceRocket.png in Resources */,
+				A367C9B620C160850065D939 /* Earth.png in Resources */,
+				A367C9A920C14BCE0065D939 /* Rocket.png in Resources */,
+				A367C98E20C146AB0065D939 /* Main.storyboard in Resources */,
+				A367C99520C146AB0065D939 /* GameScene.sks in Resources */,
+				A31B6ACA20CAF8260071090A /* Left.png in Resources */,
+				A31B6AB620CAA78F0071090A /* Screen.png in Resources */,
+				A31B6ADC20CBF84B0071090A /* HouseBar.png in Resources */,
+				A31B6AE220CBF8520071090A /* PoliceRun.png in Resources */,
+				A31B6AB020CA9DC40071090A /* House.png in Resources */,
+				A31B6AC920CAF8260071090A /* Right.png in Resources */,
+				A31B6AC820CAF8260071090A /* Back.png in Resources */,
+				A367C9AE20C153EB0065D939 /* Police.png in Resources */,
+				A31B6ADD20CBF84B0071090A /* HouseCinema.png in Resources */,
+				A31B6ACE20CAFCA50071090A /* Stop.png in Resources */,
+				A367C99B20C146AB0065D939 /* Assets.xcassets in Resources */,
+				A39588D420C44E8100732803 /* Background.png in Resources */,
+				A31B6ADE20CBF84B0071090A /* HouseSale.png in Resources */,
+				A31B6AE020CBF84F0071090A /* RocketRun.png in Resources */,
+				A367C99220C146AB0065D939 /* Actions.sks in Resources */,
+				A367C9B220C159A90065D939 /* BackgroundForTurbo.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A367C96220C146AB0065D939 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A367C99620C146AB0065D939 /* GameScene.swift in Sources */,
+				A367C96C20C146AB0065D939 /* GameViewController.swift in Sources */,
+				A367C96A20C146AB0065D939 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A367C97420C146AB0065D939 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A367C99720C146AB0065D939 /* GameScene.swift in Sources */,
+				A367C97D20C146AB0065D939 /* GameViewController.swift in Sources */,
+				A367C97B20C146AB0065D939 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A367C98220C146AB0065D939 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A367C99820C146AB0065D939 /* GameScene.swift in Sources */,
+				A367C98B20C146AB0065D939 /* GameViewController.swift in Sources */,
+				A367C98920C146AB0065D939 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A367C96D20C146AB0065D939 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A367C96E20C146AB0065D939 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A367C97020C146AB0065D939 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A367C97120C146AB0065D939 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A367C97E20C146AB0065D939 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A367C97F20C146AB0065D939 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A367C98C20C146AB0065D939 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A367C98D20C146AB0065D939 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A367C99C20C146AB0065D939 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A367C99D20C146AB0065D939 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		A367C99F20C146AB0065D939 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K52EJNPD2V;
+				INFOPLIST_FILE = "Turbohead iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "t-software.Turbohead";
+				PRODUCT_NAME = Turbohead;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A367C9A020C146AB0065D939 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K52EJNPD2V;
+				INFOPLIST_FILE = "Turbohead iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "t-software.Turbohead";
+				PRODUCT_NAME = Turbohead;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A367C9A220C146AB0065D939 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "tvOS LaunchImage";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K52EJNPD2V;
+				INFOPLIST_FILE = "Turbohead tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "t-software.Turbohead";
+				PRODUCT_NAME = Turbohead;
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 11.4;
+			};
+			name = Debug;
+		};
+		A367C9A320C146AB0065D939 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "tvOS LaunchImage";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K52EJNPD2V;
+				INFOPLIST_FILE = "Turbohead tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "t-software.Turbohead";
+				PRODUCT_NAME = Turbohead;
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 11.4;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A367C9A520C146AB0065D939 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = K52EJNPD2V;
+				INFOPLIST_FILE = "Turbohead macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "t-software.Turbohead";
+				PRODUCT_NAME = Turbohead;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		A367C9A620C146AB0065D939 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = K52EJNPD2V;
+				INFOPLIST_FILE = "Turbohead macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "t-software.Turbohead";
+				PRODUCT_NAME = Turbohead;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A367C95C20C146A30065D939 /* Build configuration list for PBXProject "Turbohead" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A367C99C20C146AB0065D939 /* Debug */,
+				A367C99D20C146AB0065D939 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A367C99E20C146AB0065D939 /* Build configuration list for PBXNativeTarget "Turbohead iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A367C99F20C146AB0065D939 /* Debug */,
+				A367C9A020C146AB0065D939 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A367C9A120C146AB0065D939 /* Build configuration list for PBXNativeTarget "Turbohead tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A367C9A220C146AB0065D939 /* Debug */,
+				A367C9A320C146AB0065D939 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A367C9A420C146AB0065D939 /* Build configuration list for PBXNativeTarget "Turbohead macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A367C9A520C146AB0065D939 /* Debug */,
+				A367C9A620C146AB0065D939 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A367C95920C146A30065D939 /* Project object */;
+}
