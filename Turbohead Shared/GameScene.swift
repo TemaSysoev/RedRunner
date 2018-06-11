@@ -76,7 +76,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         rocket.run(rotateAction)
         rocket.run(pulse)
         police.zRotation = rocket.zRotation
-        
     }
     
     class func newGameScene() -> GameScene {
