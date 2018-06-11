@@ -54,6 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         k = 1.0
         var rotateAction = SKAction.rotate(toAngle: rocket.zRotation, duration: 0.1)
         if input == "Up" {
+            print("ok")
             k = 0.1
             rotateAction = SKAction.rotate(toAngle: rocket.zRotation + 0.1, duration: 0.005)
         }
@@ -75,8 +76,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         rocket.run(rotateAction)
         rocket.run(pulse)
         police.zRotation = rocket.zRotation
-        
-        
         
     }
     
