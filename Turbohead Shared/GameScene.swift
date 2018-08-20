@@ -8,7 +8,7 @@
 
 import SpriteKit
 //import Cocoa//
-
+//
 struct PhysicsCategory {
     static let None      : UInt32 = 0
     static let All       : UInt32 = UInt32.max
@@ -38,6 +38,10 @@ public var background3 = SKSpriteNode(imageNamed: "Background.png")
 public var background4 = SKSpriteNode(imageNamed: "Background.png")
 public var cam: SKCameraNode?
 
+public var up = SKSpriteNode(imageNamed: "Up.png")
+public var down = SKSpriteNode(imageNamed: "Down.png")
+public var right = SKSpriteNode(imageNamed: "Right.png")
+public var left = SKSpriteNode(imageNamed: "Left.png")
 
 public var deltaX = CGFloat(150)
 public var deltaY = CGFloat(300)
@@ -70,7 +74,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         k = 1.0
         var rotateAction = SKAction.rotate(toAngle: rocket.zRotation, duration: 0.1)
         if input == "Up" {
-            print("ok")
+            
             k = 0.1
             rotateAction = SKAction.rotate(toAngle: rocket.zRotation + 0.1, duration: 0.005)
         }
@@ -112,12 +116,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setUpScene() {
         
-        
-        
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
-        
-        
+    
         rocket.name = "Rocket"
         rocket.childNode(withName: "Rocket")
         rocket.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
@@ -222,6 +223,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         label1.isHidden = false
         
         
+        up.name = "Rocket"
+        up.childNode(withName: "Up")
+        up.position = CGPoint(x: rocket.position.x - 300, y: rocket.position.x - 200)
+        up.zPosition = 30.0
+        up.xScale = 0.65
+        up.yScale = 0.65
+        
         cam = SKCameraNode()
         self.camera = cam
     
@@ -245,7 +253,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     random = 1
             }
             if random <= 5 {
-                    print(random)
                     self.addChild(earth.copy() as! SKNode)
                     earth.texture = SKTexture(imageNamed: "House.png")
                    // earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
@@ -340,8 +347,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 xPos = -6000
                 yPos = yPos - 150
             }
+            
         }
-        print(counter)
     }
     func didBegin(_ contact: SKPhysicsContact) {
         
@@ -409,8 +416,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 // Touch-based event handling
 extension GameScene {
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if iOSControl.turnRight == true {
+            rotaionAction(input: "Down")
+        }
         
         for t in touches {
             
@@ -419,18 +431,7 @@ extension GameScene {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
-            if t.location(in: self.scene!).x - t.previousLocation(in: self.scene!).x < 0.0 {
-                rotaionAction(input: "Up")
-            }
-            if t.location(in: self.scene!).x - t.previousLocation(in: self.scene!).x > 0.0 {
-                rotaionAction(input: "Down")
-            }
-            if t.location(in: self.scene!).y - t.previousLocation(in: self.scene!).y > 0.0 {
-                 rotaionAction(input: "1")
-            }
-            if t.location(in: self.scene!).y - t.previousLocation(in: self.scene!).y < 0.0 {
-                rotaionAction(input: "0")
-            }
+            
            
         }
     }
@@ -446,6 +447,7 @@ extension GameScene {
            
         }
     }
+    
     
    
 }
@@ -495,7 +497,7 @@ extension GameScene {
         }
     }
     override func mouseDown(with event: NSEvent) {
-        print(position)
+  
     }
     
     override func mouseDragged(with event: NSEvent) {
