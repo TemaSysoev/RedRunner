@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Turbohead Shared/GameScene.swift"
-            timestampString = "556711479.930851"
+            timestampString = "556728613.562439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "276"
-            endingLineNumber = "276"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
             landmarkName = "setUpScene()"
             landmarkType = "7">
          </BreakpointContent>

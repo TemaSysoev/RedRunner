@@ -55,7 +55,6 @@ public var oldDeltaY = CGFloat(0)
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-   
     var pulse = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.1)
     var policeAction = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.01)
     var policeAction2 = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.01)
@@ -109,9 +108,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         rocket.physicsBody?.angularVelocity = 0.0
         rocket.run(rotateAction)
         rocket.run(pulse)
-        pirate1.zRotation = rocket.zRotation
-        pirate2.zRotation = rocket.zRotation
-        pirate3.zRotation = rocket.zRotation
+        
         
     }
     
@@ -146,6 +143,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         transport.physicsBody?.contactTestBitMask = PhysicsCategory.Earth | PhysicsCategory.Pirate1 | PhysicsCategory.Pirate2 | PhysicsCategory.Pirate3 | PhysicsCategory.Rocket
         transport.physicsBody?.collisionBitMask = PhysicsCategory.Earth | PhysicsCategory.Pirate1 | PhysicsCategory.Pirate2 | PhysicsCategory.Pirate3 | PhysicsCategory.Rocket
         transport.shadowedBitMask = 0
+        transport.physicsBody?.mass = 10000000000
     
         rocket.name = "Rocket"
         rocket.childNode(withName: "Rocket")
@@ -295,21 +293,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
             firstBody = contact.bodyA
             secondBody = contact.bodyB
-            
         } else {
             firstBody = contact.bodyB
             secondBody = contact.bodyA
         }
         func rocketDidCollideWithPolice(rocket:SKSpriteNode, pirate:SKSpriteNode) {
-            
             pirate1.removeFromParent()
         }
         func rocketDidCollideWithPolice2(rocket:SKSpriteNode, pirate2:SKSpriteNode) {
-            
             pirate2.removeFromParent()
         }
         func rocketDidCollideWithPolice3(rocket:SKSpriteNode, pirate3:SKSpriteNode) {
-            checkCrash()
             pirate3.removeFromParent()
         }
         if ((firstBody.categoryBitMask & PhysicsCategory.Rocket != 0) &&
@@ -361,6 +355,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         label1.position = CGPoint(x: rocket.position.x,  y: rocket.position.y + 200)
         cam?.position = rocket.position
        //cam?.zRotation = rocket.zRotation
+        
+        transport.physicsBody?.velocity = CGVector(dx: 100, dy: 100)
+        pirate1.zRotation = atan((transport.position.y-pirate1.position.y)/(transport.position.x-pirate1.position.x))
+        pirate2.zRotation = atan((transport.position.y-pirate2.position.y)/(transport.position.x-pirate2.position.x))
+        pirate3.zRotation = atan((transport.position.y-pirate3.position.y)/(transport.position.x-pirate3.position.x))
+        var randomPos = CGFloat(100)//CGFloat(arc4random_uniform(50)) - 25
+        pirate1.physicsBody?.velocity = CGVector(dx: (transport.position.x - pirate1.position.x + randomPos ), dy: (transport.position.y - pirate1.position.y + randomPos))
+        randomPos = CGFloat(arc4random_uniform(100)) - 50
+        pirate2.physicsBody?.velocity = CGVector(dx: (transport.position.x - pirate2.position.x + randomPos), dy: (transport.position.y - pirate2.position.y + randomPos))
+        randomPos = CGFloat(arc4random_uniform(100)) - 50
+        pirate3.physicsBody?.velocity = CGVector(dx: (transport.position.x - pirate3.position.x + randomPos), dy: (transport.position.y - pirate3.position.y + randomPos))
+        print(pirate1.physicsBody?.velocity)
     }
 }
 
@@ -452,13 +458,7 @@ extension GameScene {
             pirate2.run(SKAction.animate(with: [SKTexture(imageNamed: "PoliceRun.png")], timePerFrame: 0.02, resize: false, restore: true))
             pirate3.run(SKAction.animate(with: [SKTexture(imageNamed: "PoliceRun.png")], timePerFrame: 0.02, resize: false, restore: true))
             */
-            var randomPos = CGFloat(arc4random_uniform(100)) - 50
-            pirate1.physicsBody?.velocity = CGVector(dx: (transport.position.x - pirate1.position.x + randomPos ), dy: (transport.position.y - pirate1.position.y + randomPos))
-            randomPos = CGFloat(arc4random_uniform(100)) - 50
-            pirate2.physicsBody?.velocity = CGVector(dx: (transport.position.x - pirate2.position.x + randomPos), dy: (transport.position.y - pirate2.position.y + randomPos))
-            randomPos = CGFloat(arc4random_uniform(100)) - 50
-            pirate3.physicsBody?.velocity = CGVector(dx: (transport.position.x - pirate3.position.x + randomPos), dy: (transport.position.y - pirate3.position.y + randomPos))
-                print(pirate1.physicsBody?.velocity)
+            
             
         }
     }
