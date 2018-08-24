@@ -33,6 +33,8 @@ class GameViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(GameViewController.updateTimer)), userInfo: nil, repeats: true)
+
         
         let scene = GameScene.newGameScene()
 
@@ -44,7 +46,9 @@ class GameViewController: UIViewController {
         //skView.showsFPS = true
         //skView.showsNodeCount = true
     }
-
+    @objc func updateTimer(){
+        missonTimer =- 1
+    }
     override var shouldAutorotate: Bool {
         return true
     }
