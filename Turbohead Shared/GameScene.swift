@@ -55,6 +55,7 @@ public var deltaY = CGFloat(300)
 public var oldDeltaX = CGFloat(0)
 public var oldDeltaY = CGFloat(0)
 
+<<<<<<< HEAD
 public var timer = Timer()
 public var missonTimer = 30
 public var crash = 100
@@ -86,16 +87,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             labelHealth.text = "Oh, shit! Fucking cops had you"
         }
     }
+=======
+
+
+class GameScene: SKScene, SKPhysicsContactDelegate {
+    
+    var pulse = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.1)
+    var policeAction = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.01)
+    var policeAction2 = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.01)
+    var policeAction3 = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.01)
+    var cameraLocateAction = SKAction.move(to: CGPoint(x: 0, y: 0), duration: 0.1)
+    var crash = 100
+    var label1 = SKLabelNode()
+    
+>>>>>>> parent of 2b8401c... #2 c2
     func applyMisson(missonName: String){
         if missonName == "Transport1" {
-            crash = 100
-            missonTimer = 30
-            labelHealth.isHidden = false
-            labelTimer.isHidden = false
             transport.physicsBody?.velocity = CGVector(dx: 100, dy: 100)
             pirate1.position = CGPoint(x: transport.position.x - 100, y: transport.position.y - 100)
             pirate2.position = CGPoint(x: transport.position.x + 100, y: transport.position.y - 100)
             pirate3.position = CGPoint(x: transport.position.x, y: transport.position.y - 100)
+<<<<<<< HEAD
             addChild(pirate1)
             addChild(pirate2)
             addChild(pirate3)
@@ -106,6 +118,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
+=======
+            self.addChild(pirate1)
+            self.addChild(pirate2)
+            self.addChild(pirate3)
+            self.addChild(transport)
+        }
+    }
+    func checkCrash() {
+        crash = crash - 1
+        label1.text = "❤️: \(crash)"
+        if crash <= 0 {
+            self.isPaused = true
+            label1.text = "Oh, shit! Fucking cops had you"
+        }
+    }
+>>>>>>> parent of 2b8401c... #2 c2
     func rotaionAction(input: String){
         var k: CGFloat
         k = 1.0
@@ -245,21 +273,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         background4.xScale = 3.0
         background4.yScale = 3.0
         
-        labelHealth.text = "❤️: \(crash)"
-        labelHealth.fontSize = 20
-        labelHealth.fontColor = SKColor.white
-        labelHealth.fontName = "Helveretica Bold"
-        labelHealth.zPosition = 30
-        labelHealth.position = CGPoint(x: transport.position.x,  y: transport.position.y + 200)
-        labelHealth.isHidden = true
+        label1.text = "❤️: \(crash)"
+        label1.fontSize = 20
+        label1.fontColor = SKColor.white
+        label1.fontName = "Helveretica Bold"
+        label1.zPosition = 30
+        label1.position = CGPoint(x: rocket.position.x,  y: rocket.position.y + 200)
+        label1.isHidden = false
         
-        labelTimer.text = "⏱: \(missonTimer)"
-        labelTimer.fontSize = 20
-        labelTimer.fontColor = SKColor.white
-        labelTimer.fontName = "Helveretica Bold"
-        labelTimer.zPosition = 31
-        labelTimer.position = CGPoint(x: rocket.position.x,  y: rocket.position.y + 200)
-        labelTimer.isHidden = true
         
         up.name = "Rocket"
         up.childNode(withName: "Up")
@@ -279,9 +300,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(earth)
         self.addChild(stop)
         
-        self.addChild(labelHealth)
-        self.addChild(labelTimer)
-        
+        self.addChild(label1)
         
         var xPos = -6000
         var yPos = 6000
@@ -289,16 +308,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var counter = 1
         for _ in 1...5000 {
             counter = counter + 1
-            random = arc4random_uniform(100)
+           random = arc4random_uniform(100)
             if (xPos == Int(self.frame.midX)) && (yPos == Int(self.frame.midY)) || (xPos == Int(self.frame.midX - 400)) && (yPos == Int(self.frame.midY)){
                     random = 1
             }
-            if random <= 2 {
-                transport.position = CGPoint(x: rocket.position.x, y: rocket.position.y + 200)
-                self.addChild(earth.copy() as! SKNode)
-                earth.texture = SKTexture(imageNamed: "House.png")
-                earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
-                earth.position = CGPoint(x: xPos,y: yPos)
+            if random <= 5 {
+                   // self.addChild(earth.copy() as! SKNode)
+                    earth.texture = SKTexture(imageNamed: "House.png")
+                   // earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
+                    earth.position = CGPoint(x: xPos,y: yPos)
             }
             
             xPos = xPos + 150
@@ -309,7 +327,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
     }
-    
     func didBegin(_ contact: SKPhysicsContact) {
         
         var firstBody: SKPhysicsBody
@@ -358,8 +375,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             checkCrash()
         }
         
-        
-        
     }
     #if os(watchOS)
     override func sceneDidLoad() {
@@ -374,16 +389,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
    
     
     override func update(_ currentTime: TimeInterval) {
-        
-        labelTimer.text = "⏱: \(missonTimer)"
-        
         background1.position = CGPoint(x: rocket.position.x + 250, y: rocket.position.y + 250)
         background2.position = CGPoint(x: rocket.position.x - 250, y: rocket.position.y + 500)
         background3.position = CGPoint(x: rocket.position.x - 250, y: rocket.position.y - 250)
         background4.position = CGPoint(x: rocket.position.x + 250, y: rocket.position.y - 250)
         
-        labelHealth.position = CGPoint(x: transport.position.x,  y: transport.position.y + 100)
-        labelTimer.position = CGPoint(x: rocket.position.x,  y: rocket.position.y + 200)
+        label1.position = CGPoint(x: rocket.position.x,  y: rocket.position.y + 200)
         cam?.position = rocket.position
        //cam?.zRotation = rocket.zRotation
         

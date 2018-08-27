@@ -16,8 +16,7 @@ class GameViewController: NSViewController {
         super.viewDidLoad()
         
         let scene = GameScene.newGameScene()
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(GameViewController.updateTimer)), userInfo: nil, repeats: true)
-
+        
         // Present the scene
         let skView = self.view as! SKView
         skView.presentScene(scene)
@@ -27,8 +26,6 @@ class GameViewController: NSViewController {
         //skView.showsFPS = true
         //skView.showsNodeCount = true
     }
-    @objc func updateTimer(){
-        missonTimer -= 1
-    }
+
 }
 
