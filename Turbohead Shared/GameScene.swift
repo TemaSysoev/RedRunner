@@ -28,6 +28,7 @@ func random(_ min: CGFloat, max: CGFloat) -> CGFloat {
     return random() * (max - min) + min
 }
 
+
 public var rocket = SKSpriteNode(imageNamed: "Rocket.png")
 public var pirate1 = SKSpriteNode(imageNamed: "Police.png")
 public var pirate2 = SKSpriteNode(imageNamed: "Police.png")
@@ -39,7 +40,10 @@ public var background1 = SKSpriteNode(imageNamed: "Background.png")
 public var background2 = SKSpriteNode(imageNamed: "Background.png")
 public var background3 = SKSpriteNode(imageNamed: "Background.png")
 public var background4 = SKSpriteNode(imageNamed: "Background.png")
+public var labelHealth = SKLabelNode()
+public var labelTimer = SKLabelNode()
 public var cam: SKCameraNode?
+public var circle = SKShapeNode(circleOfRadius: 20)
 
 public var up = SKSpriteNode(imageNamed: "Up.png")
 public var down = SKSpriteNode(imageNamed: "Down.png")
@@ -53,19 +57,35 @@ public var oldDeltaY = CGFloat(0)
 
 public var timer = Timer()
 public var missonTimer = 30
+public var crash = 100
+
+public var pulse = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.1)
+public var policeAction = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.01)
+public var policeAction2 = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.01)
+public var policeAction3 = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.01)
+public var cameraLocateAction = SKAction.move(to: CGPoint(x: 0, y: 0), duration: 0.1)
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var pulse = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.1)
-    var policeAction = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.01)
-    var policeAction2 = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.01)
-    var policeAction3 = SKAction.applyImpulse(CGVector(dx: 0, dy: 0), duration: 0.01)
-    var cameraLocateAction = SKAction.move(to: CGPoint(x: 0, y: 0), duration: 0.1)
-   
-    var crash = 100
-    var labelHealth = SKLabelNode()
-    var labelTimer = SKLabelNode()
-    
+    class func newGameScene() -> GameScene {
+        // Load 'GameScene.sks' as an SKScene.
+        guard let scene = SKScene(fileNamed: "GameScene") as? GameScene else {
+            print("Failed to load GameScene.sks")
+            abort()
+        }
+        
+        // Set the scale mode to scale to fit the window
+        scene.scaleMode = .aspectFill
+        
+        return scene
+    }
+    func checkCrash() {
+        crash = crash - 1
+        labelHealth.text = "❤️: \(crash)"
+        if crash <= 0 {
+            labelHealth.text = "Oh, shit! Fucking cops had you"
+        }
+    }
     func applyMisson(missonName: String){
         if missonName == "Transport1" {
             crash = 100
@@ -76,22 +96,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             pirate1.position = CGPoint(x: transport.position.x - 100, y: transport.position.y - 100)
             pirate2.position = CGPoint(x: transport.position.x + 100, y: transport.position.y - 100)
             pirate3.position = CGPoint(x: transport.position.x, y: transport.position.y - 100)
-            self.addChild(pirate1)
-            self.addChild(pirate2)
-            self.addChild(pirate3)
-            self.addChild(transport)
+            addChild(pirate1)
+            addChild(pirate2)
+            addChild(pirate3)
+            addChild(transport)
             
             if missonTimer <= 0 {
                 
             }
-        }
-    }
-    func checkCrash() {
-        crash = crash - 1
-        labelHealth.text = "❤️: \(crash)"
-        if crash <= 0 {
-            self.isPaused = true
-            labelHealth.text = "Oh, shit! Fucking cops had you"
         }
     }
     func rotaionAction(input: String){
@@ -122,22 +134,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
     }
-    
-    class func newGameScene() -> GameScene {
-        // Load 'GameScene.sks' as an SKScene.
-        guard let scene = SKScene(fileNamed: "GameScene") as? GameScene else {
-            print("Failed to load GameScene.sks")
-            abort()
-        }
+    func addNewPirate(textureRandomSelector: Int){
         
-        // Set the scale mode to scale to fit the window
-        scene.scaleMode = .aspectFill
-        
-        return scene
     }
-    
     func setUpScene() {
-        
         
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
@@ -270,6 +270,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         cam = SKCameraNode()
         self.camera = cam
+        
+        circle.position = rocket.position
     
         self.addChild(cam!)
         self.addChild(rocket)
