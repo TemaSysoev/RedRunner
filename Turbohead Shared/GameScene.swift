@@ -56,6 +56,7 @@ public var oldDeltaX = CGFloat(0)
 public var oldDeltaY = CGFloat(0)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 public var timer = Timer()
 public var missonTimer = 30
 public var crash = 100
@@ -88,6 +89,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 =======
+=======
+>>>>>>> parent of 2b8401c... #2 c2
 
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -108,6 +111,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             pirate2.position = CGPoint(x: transport.position.x + 100, y: transport.position.y - 100)
             pirate3.position = CGPoint(x: transport.position.x, y: transport.position.y - 100)
 <<<<<<< HEAD
+<<<<<<< HEAD
             addChild(pirate1)
             addChild(pirate2)
             addChild(pirate3)
@@ -116,6 +120,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if missonTimer <= 0 {
                 
             }
+=======
+            self.addChild(pirate1)
+            self.addChild(pirate2)
+            self.addChild(pirate3)
+            self.addChild(transport)
+>>>>>>> parent of 2b8401c... #2 c2
         }
     }
 =======
