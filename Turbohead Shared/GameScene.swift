@@ -6,6 +6,7 @@
 //  Copyright © 2018 Tema Sysoev. All rights reserved.
 //
 import SpriteKit
+import CoreMotion
 //import Cocoa
 struct PhysicsCategory {
     static let None      : UInt32 = 0
@@ -51,6 +52,10 @@ public var oldDeltaY = CGFloat(0)
 
 public var timer = Timer()
 public var missonTimer = 30
+
+
+public var motionManager: CMMotionManager!
+
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
@@ -394,6 +399,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         randomPos = CGFloat(arc4random_uniform(100)) - 50
         pirate3.physicsBody?.velocity = CGVector(dx: (transport.position.x - pirate3.position.x + randomPos), dy: (transport.position.y - pirate3.position.y + randomPos))
         print(pirate1.physicsBody?.velocity)
+        
+        
+        
+        
+        
+        #if os(iOS) || os(tvOS)
+        if let accelerometerData = motionManager.accelerometerData {
+            
+            
+            physicsWorld.gravity = CGVector(dx: accelerometerData.acceleration.y * -2, dy: accelerometerData.acceleration.x * 2)
+        }
+        #endif
     }
 }
 
@@ -405,9 +422,7 @@ extension GameScene {
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if iOSControl.turnRight == true {
-            rotaionAction(input: "Down")
-        }
+       
         
         for t in touches {
             
