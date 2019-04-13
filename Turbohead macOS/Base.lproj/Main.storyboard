@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XAI-Ow-TiW">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XAI-Ow-TiW">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14269.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -141,27 +141,36 @@
             </objects>
             <point key="canvasLocation" x="665" y="263"/>
         </scene>
-        <!--View Controller-->
+        <!--Launcher View Controller-->
         <scene sceneID="dVx-gE-FdK">
             <objects>
-                <viewController id="xid-Xx-jMI" sceneMemberID="viewController">
+                <viewController id="xid-Xx-jMI" customClass="LauncherViewController" customModule="Turbohead" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="9Fm-BN-K2i">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="513" height="270"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iK1-Xg-VIL">
-                                <rect key="frame" x="37" y="118" width="126" height="32"/>
-                                <buttonCell key="cell" type="push" title="tap me to play" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CLU-zg-1WV">
+                                <rect key="frame" x="224" y="118" width="66" height="32"/>
+                                <buttonCell key="cell" type="push" title="Play" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CLU-zg-1WV">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
+                                    <action selector="playAction:" target="xid-Xx-jMI" id="OCF-6n-kTe"/>
                                     <segue destination="XfG-lQ-9wD" kind="show" id="uch-oj-9nG"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KSk-HW-WZ6">
-                                <rect key="frame" x="34" y="100" width="132" height="17"/>
+                                <rect key="frame" x="191" y="100" width="132" height="17"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Use WASD to control" id="TJB-wq-Yzo">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SNn-Yy-i5X">
+                                <rect key="frame" x="238" y="165" width="37" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="DL2-Ao-KWa">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -169,21 +178,26 @@
                             </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="SNn-Yy-i5X" firstAttribute="centerX" secondItem="9Fm-BN-K2i" secondAttribute="centerX" id="88T-ZT-erl"/>
                             <constraint firstItem="KSk-HW-WZ6" firstAttribute="centerX" secondItem="9Fm-BN-K2i" secondAttribute="centerX" id="SlF-dN-Dxx"/>
                             <constraint firstItem="iK1-Xg-VIL" firstAttribute="centerX" secondItem="9Fm-BN-K2i" secondAttribute="centerX" id="cms-nr-WFd"/>
                             <constraint firstItem="KSk-HW-WZ6" firstAttribute="top" secondItem="iK1-Xg-VIL" secondAttribute="bottom" constant="8" id="jYW-lx-TaS"/>
                             <constraint firstItem="iK1-Xg-VIL" firstAttribute="centerY" secondItem="9Fm-BN-K2i" secondAttribute="centerY" id="o4i-Zx-z7H"/>
+                            <constraint firstItem="iK1-Xg-VIL" firstAttribute="top" secondItem="SNn-Yy-i5X" secondAttribute="bottom" constant="19" id="oxM-Zh-c82"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="genLabel" destination="SNn-Yy-i5X" id="LCy-cs-KOo"/>
+                    </connections>
                 </viewController>
                 <customObject id="2pg-eL-dJm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="846" y="660"/>
+            <point key="canvasLocation" x="1002.5" y="660"/>
         </scene>
-        <!--Game View Controller-->
+        <!--Turbohead v0.1-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="GameViewController" customModule="Turbohead" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Turbohead v0.1" id="XfG-lQ-9wD" customClass="GameViewController" customModule="Turbohead" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>

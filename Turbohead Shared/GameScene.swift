@@ -6,8 +6,11 @@
 //  Copyright © 2018 Tema Sysoev. All rights reserved.
 //
 import SpriteKit
+#if os(iOS) || os(tvOS)
 import CoreMotion
-//import Cocoa
+
+#endif
+import Cocoa
 struct PhysicsCategory {
     static let None      : UInt32 = 0
     static let All       : UInt32 = UInt32.max
@@ -19,6 +22,11 @@ struct PhysicsCategory {
     static let Pirate3: UInt32 = 1 << 5
 }
 
+struct Public {
+    static var counter = 1
+    static var mapCreator = [Int]()
+}
+
 func random() -> CGFloat {
     return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
 }
@@ -27,17 +35,13 @@ func random(_ min: CGFloat, max: CGFloat) -> CGFloat {
     return random() * (max - min) + min
 }
 
-public var rocket = SKSpriteNode(imageNamed: "Rocket.png")
+public var rocket = SKSpriteNode(imageNamed: "PLAYERright.png")
 public var pirate1 = SKSpriteNode(imageNamed: "Police.png")
 public var pirate2 = SKSpriteNode(imageNamed: "Police.png")
 public var pirate3 = SKSpriteNode(imageNamed: "Police.png")
-public var transport = SKSpriteNode(imageNamed: "Transport.png")
+
 public var earth = SKSpriteNode(imageNamed: "House.png")
 public var stop = SKSpriteNode(imageNamed: "Stop.png")
-public var background1 = SKSpriteNode(imageNamed: "Background.png")
-public var background2 = SKSpriteNode(imageNamed: "Background.png")
-public var background3 = SKSpriteNode(imageNamed: "Background.png")
-public var background4 = SKSpriteNode(imageNamed: "Background.png")
 public var cam: SKCameraNode?
 
 public var up = SKSpriteNode(imageNamed: "Up.png")
@@ -54,8 +58,10 @@ public var timer = Timer()
 public var missonTimer = 30
 
 
-public var motionManager: CMMotionManager!
 
+#if os(iOS) || os(tvOS)
+public var motionManager: CMMotionManager!
+#endif
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
@@ -75,14 +81,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             missonTimer = 30
             labelHealth.isHidden = false
             labelTimer.isHidden = false
-            transport.physicsBody?.velocity = CGVector(dx: 100, dy: 100)
-            pirate1.position = CGPoint(x: transport.position.x - 100, y: transport.position.y - 100)
-            pirate2.position = CGPoint(x: transport.position.x + 100, y: transport.position.y - 100)
-            pirate3.position = CGPoint(x: transport.position.x, y: transport.position.y - 100)
+            
+            pirate1.position = CGPoint(x: rocket.position.x - 100, y: rocket.position.y - 100)
+            pirate2.position = CGPoint(x: rocket.position.x + 100, y: rocket.position.y - 100)
+            pirate3.position = CGPoint(x: rocket.position.x, y: rocket.position.y - 100)
             self.addChild(pirate1)
             self.addChild(pirate2)
             self.addChild(pirate3)
-            self.addChild(transport)
+            
             
             if missonTimer <= 0 {
                 
@@ -101,20 +107,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var k: CGFloat
         k = 1.0
         var rotateAction = SKAction.rotate(toAngle: rocket.zRotation, duration: 0.1)
-        if input == "Up" {
+        if input == "A" /*Left*/ {
+            rocket.run(SKAction.animate(with: [SKTexture(imageNamed: "RLAYERleft")], timePerFrame: 0.02, resize: false, restore: true))
             k = 0.1
-            rotateAction = SKAction.rotate(toAngle: rocket.zRotation + 0.1, duration: 0.005)
+            rotateAction = SKAction.rotate(toAngle: rocket.zRotation + 0.2, duration: 0.002)
+            pulse = SKAction.applyImpulse(CGVector(dx: k*cos(rocket.zRotation), dy: k * sin(rocket.zRotation)), duration: 0.01)
+            rocket.physicsBody?.velocity.dx = (rocket.physicsBody?.velocity.dx)!/1.1
+            rocket.physicsBody?.velocity.dy = (rocket.physicsBody?.velocity.dy)!/1.1
         }
-        if input == "Down" {
+        if input == "D" /*Right*/ {
+            rocket.run(SKAction.animate(with: [SKTexture(imageNamed: "RLAYERright.png")], timePerFrame: 0.02, resize: false, restore: true))
             k = 0.1
-            rotateAction = SKAction.rotate(toAngle: rocket.zRotation - 0.1, duration: 0.005)
+            rotateAction = SKAction.rotate(toAngle: rocket.zRotation - 0.2, duration: 0.002)
+            pulse = SKAction.applyImpulse(CGVector(dx: k*cos(rocket.zRotation), dy: k * sin(rocket.zRotation)), duration: 0.01)
+            rocket.physicsBody?.velocity.dx = (rocket.physicsBody?.velocity.dx)!/1.1
+            rocket.physicsBody?.velocity.dy = (rocket.physicsBody?.velocity.dy)!/1.1
         }
-        if input == "1" {
-            rocket.run(SKAction.animate(with: [SKTexture(imageNamed: "RocketRun.png")], timePerFrame: 0.02, resize: false, restore: true))
+        if input == "W" /*Up*/ {
+            //rocket.run(SKAction.animate(with: [SKTexture(imageNamed: "RLAYER.png")], timePerFrame: 0.02, resize: false, restore: true))
             k = 2
             rocket.physicsBody?.angularVelocity = 0.0
         }
-        if input == "0" {
+        if input == "S" /*Down*/{
+            rocket.run(SKAction.animate(with: [SKTexture(imageNamed: "RLAYERback")], timePerFrame: 0.02, resize: false, restore: true))
             k = -2
             rocket.physicsBody?.angularVelocity = 0.0
         }
@@ -145,27 +160,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         
-        transport.name = "Rocket"
-        transport.childNode(withName: "Rocket")
-        transport.position = CGPoint(x: rocket.position.x, y: rocket.position.y + 200)
-        transport.zPosition = 10.0
-        transport.xScale = 0.65
-        transport.yScale = 0.65
         
-        transport.physicsBody = SKPhysicsBody(texture: transport.texture!, size: transport.size)
-        transport.physicsBody?.isDynamic = true
-        transport.physicsBody?.categoryBitMask = PhysicsCategory.Transport
-        transport.physicsBody?.contactTestBitMask = PhysicsCategory.Earth | PhysicsCategory.Pirate1 | PhysicsCategory.Pirate2 | PhysicsCategory.Pirate3 | PhysicsCategory.Rocket
-        transport.physicsBody?.collisionBitMask = PhysicsCategory.Earth | PhysicsCategory.Pirate1 | PhysicsCategory.Pirate2 | PhysicsCategory.Pirate3 | PhysicsCategory.Rocket
-        transport.shadowedBitMask = 0
-        transport.physicsBody?.mass = 10000000000
+        
+       
         
         rocket.name = "Rocket"
         rocket.childNode(withName: "Rocket")
         rocket.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
         rocket.zPosition = 10.0
-        rocket.xScale = 0.65
-        rocket.yScale = 0.65
+        rocket.size.height = 60
+        rocket.size.width = 60
         
         rocket.physicsBody = SKPhysicsBody(texture: rocket.texture!, size: rocket.size)
         rocket.physicsBody?.isDynamic = true
@@ -219,7 +223,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         earth.yScale = 2.1
         
         earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
-        earth.physicsBody?.isDynamic = true
+        earth.physicsBody?.isDynamic = false
         earth.physicsBody?.categoryBitMask = PhysicsCategory.Earth
         earth.physicsBody?.contactTestBitMask = PhysicsCategory.Earth | PhysicsCategory.Rocket | PhysicsCategory.Transport | PhysicsCategory.Pirate1 | PhysicsCategory.Pirate2 | PhysicsCategory.Pirate3
         earth.physicsBody?.collisionBitMask = PhysicsCategory.Earth | PhysicsCategory.Rocket | PhysicsCategory.Transport | PhysicsCategory.Pirate1 | PhysicsCategory.Pirate2 | PhysicsCategory.Pirate3
@@ -232,28 +236,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         stop.yScale = 2.1
         
         
-        background1.zPosition = 5.0
-        background1.xScale = 3.0
-        background1.yScale = 3.0
-        
-        background2.zPosition = 5.0
-        background2.xScale = 3.0
-        background2.yScale = 3.0
-        
-        background3.zPosition = 5.0
-        background3.xScale = 3.0
-        background3.yScale = 3.0
-        
-        background4.zPosition = 5.0
-        background4.xScale = 3.0
-        background4.yScale = 3.0
-        
         labelHealth.text = "❤️: \(crash)"
         labelHealth.fontSize = 20
         labelHealth.fontColor = SKColor.white
         labelHealth.fontName = "Helveretica Bold"
         labelHealth.zPosition = 30
-        labelHealth.position = CGPoint(x: transport.position.x,  y: transport.position.y + 200)
+        labelHealth.position = CGPoint(x: rocket.position.x,  y: rocket.position.y + 200)
         labelHealth.isHidden = true
         
         labelTimer.text = "⏱: \(missonTimer)"
@@ -283,33 +271,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(labelHealth)
         self.addChild(labelTimer)
         
+     
         
         var xPos = -6000
         var yPos = 6000
         var random = arc4random_uniform(100)
-        var counter = 1
-        for _ in 1...5000 {
-            counter = counter + 1
-            random = arc4random_uniform(100)
-            if (xPos == Int(self.frame.midX)) && (yPos == Int(self.frame.midY)) || (xPos == Int(self.frame.midX - 400)) && (yPos == Int(self.frame.midY)){
-                random = 1
-            }
-            if random <= 2 {
-                transport.position = CGPoint(x: rocket.position.x, y: rocket.position.y + 200)
+        
+        
+        for i in 1...3600 {
+            print(Public.counter)
+            
+            
+            /*if (xPos == Int(self.frame.midX)) && (yPos == Int(self.frame.midY)) || (xPos == Int(self.frame.midX - 400)) && (yPos == Int(self.frame.midY)){
+                random = 89
+            }*/
+           // if random <= 20 {
+            Public.counter = Public.counter + 1
+            if Public.mapCreator[i] == 1{
                 self.addChild(earth.copy() as! SKNode)
                 earth.texture = SKTexture(imageNamed: "House.png")
                 earth.physicsBody = SKPhysicsBody(texture: earth.texture!, size: earth.size)
+                earth.physicsBody?.isDynamic = false
                 earth.position = CGPoint(x: xPos,y: yPos)
+            //}
             }
-            
             xPos = xPos + 150
-            if xPos > 6000 {
-                xPos = -6000
+            if xPos > 600 {
+                xPos = -600
                 yPos = yPos - 150
             }
             
         }
     }
+    
     
     func didBegin(_ contact: SKPhysicsContact) {
         
@@ -324,27 +318,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             secondBody = contact.bodyA
         }
         func rocketDidCollideWithPolice(rocket:SKSpriteNode, pirate:SKSpriteNode) {
-            pirate1.removeFromParent()
+            
         }
         func rocketDidCollideWithPolice2(rocket:SKSpriteNode, pirate2:SKSpriteNode) {
-            pirate2.removeFromParent()
+            
         }
         func rocketDidCollideWithPolice3(rocket:SKSpriteNode, pirate3:SKSpriteNode) {
             pirate3.removeFromParent()
         }
         if ((firstBody.categoryBitMask & PhysicsCategory.Rocket != 0) &&
             (secondBody.categoryBitMask & PhysicsCategory.Pirate1 != 0)) {
-            rocketDidCollideWithPolice(rocket: firstBody.node as! SKSpriteNode, pirate: secondBody.node as! SKSpriteNode)
+            //rocketDidCollideWithPolice(rocket: firstBody.node as! SKSpriteNode, pirate: secondBody.node as! SKSpriteNode)
+            pirate1.removeFromParent()
         }
         
         if ((firstBody.categoryBitMask & PhysicsCategory.Rocket != 0) &&
             (secondBody.categoryBitMask & PhysicsCategory.Pirate2 != 0)) {
-            rocketDidCollideWithPolice2(rocket: firstBody.node as! SKSpriteNode, pirate2: secondBody.node as! SKSpriteNode)
+            //rocketDidCollideWithPolice2(rocket: firstBody.node as! SKSpriteNode, pirate2: secondBody.node as! SKSpriteNode)
+            pirate2.removeFromParent()
         }
         
         if ((firstBody.categoryBitMask & PhysicsCategory.Rocket != 0) &&
             (secondBody.categoryBitMask & PhysicsCategory.Pirate3 != 0)) {
-            rocketDidCollideWithPolice3(rocket: firstBody.node as! SKSpriteNode, pirate3: secondBody.node as! SKSpriteNode)
+           // rocketDidCollideWithPolice3(rocket: firstBody.node as! SKSpriteNode, pirate3: secondBody.node as! SKSpriteNode)
+             pirate3.removeFromParent()
         }
         if ((firstBody.categoryBitMask & PhysicsCategory.Transport != 0) &&
             (secondBody.categoryBitMask & PhysicsCategory.Pirate1 != 0)) {
@@ -377,28 +374,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         
         labelTimer.text = "⏱: \(missonTimer)"
+    
         
-        background1.position = CGPoint(x: rocket.position.x + 250, y: rocket.position.y + 250)
-        background2.position = CGPoint(x: rocket.position.x - 250, y: rocket.position.y + 500)
-        background3.position = CGPoint(x: rocket.position.x - 250, y: rocket.position.y - 250)
-        background4.position = CGPoint(x: rocket.position.x + 250, y: rocket.position.y - 250)
-        
-        labelHealth.position = CGPoint(x: transport.position.x,  y: transport.position.y + 100)
+        labelHealth.position = CGPoint(x: rocket.position.x,  y: rocket.position.y + 100)
         labelTimer.position = CGPoint(x: rocket.position.x,  y: rocket.position.y + 200)
         cam?.position = rocket.position
         //cam?.zRotation = rocket.zRotation
         
-        transport.physicsBody?.velocity = CGVector(dx: 100, dy: 100)
-        pirate1.zRotation = atan((transport.position.y-pirate1.position.y)/(transport.position.x-pirate1.position.x))
-        pirate2.zRotation = atan((transport.position.y-pirate2.position.y)/(transport.position.x-pirate2.position.x))
-        pirate3.zRotation = atan((transport.position.y-pirate3.position.y)/(transport.position.x-pirate3.position.x))
-        var randomPos = CGFloat(100)//CGFloat(arc4random_uniform(50)) - 25
-        pirate1.physicsBody?.velocity = CGVector(dx: (transport.position.x - pirate1.position.x + randomPos ), dy: (transport.position.y - pirate1.position.y + randomPos))
+        
+        pirate1.zRotation = atan((rocket.position.y-pirate1.position.y)/(rocket.position.x-pirate1.position.x))
+        pirate2.zRotation = atan((rocket.position.y-pirate2.position.y)/(rocket.position.x-pirate2.position.x))
+        pirate3.zRotation = atan((rocket.position.y-pirate3.position.y)/(rocket.position.x-pirate3.position.x))
+        var randomPos = CGFloat(50)//CGFloat(arc4random_uniform(50)) - 25
+        pirate1.physicsBody?.velocity = CGVector(dx: (rocket.position.x - pirate1.position.x + randomPos ), dy: (rocket.position.y - pirate1.position.y + randomPos))
         randomPos = CGFloat(arc4random_uniform(100)) - 50
-        pirate2.physicsBody?.velocity = CGVector(dx: (transport.position.x - pirate2.position.x + randomPos), dy: (transport.position.y - pirate2.position.y + randomPos))
+        pirate2.physicsBody?.velocity = CGVector(dx: (rocket.position.x - pirate2.position.x + randomPos), dy: (rocket.position.y - pirate2.position.y + randomPos))
         randomPos = CGFloat(arc4random_uniform(100)) - 50
-        pirate3.physicsBody?.velocity = CGVector(dx: (transport.position.x - pirate3.position.x + randomPos), dy: (transport.position.y - pirate3.position.y + randomPos))
-        print(pirate1.physicsBody?.velocity)
+        pirate3.physicsBody?.velocity = CGVector(dx: (rocket.position.x - pirate3.position.x + randomPos), dy: (rocket.position.y - pirate3.position.y + randomPos))
+       
         
         
         
@@ -463,21 +456,21 @@ extension GameScene {
             
             // 119 97 115 100
             if codeUnit == 97 {
-                rotaionAction(input: "Up")
+                rotaionAction(input: "A")
             }
             
             if codeUnit == 115  {
-                rotaionAction(input: "0")
+                rotaionAction(input: "S")
                 
             }
             if codeUnit == 100 {
-                rotaionAction(input: "Down")
+                rotaionAction(input: "D")
                 
                 //actionY = actionY - 5
             }
             
             if codeUnit == 119 {
-                rotaionAction(input: "1")
+                rotaionAction(input: "W")
                 
             }
             if codeUnit == 13 {
@@ -518,3 +511,6 @@ extension GameScene {
     
 }
 #endif
+
+
+

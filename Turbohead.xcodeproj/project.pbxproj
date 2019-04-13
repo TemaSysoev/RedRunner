@@ -95,6 +95,13 @@
 		E0154DCF20CED5F200E58663 /* House3.png in Resources */ = {isa = PBXBuildFile; fileRef = E0154DC320CED5EB00E58663 /* House3.png */; };
 		E0154DD020CED5F200E58663 /* House4.png in Resources */ = {isa = PBXBuildFile; fileRef = E0154DC220CED5EB00E58663 /* House4.png */; };
 		E0154DD120CED5F200E58663 /* House5.png in Resources */ = {isa = PBXBuildFile; fileRef = E0154DC420CED5EB00E58663 /* House5.png */; };
+		E021F8C622622E1600A22477 /* PLAYER.png in Resources */ = {isa = PBXBuildFile; fileRef = E021F8C022622E1600A22477 /* PLAYER.png */; };
+		E021F8C722622E1600A22477 /* PLAYER.png in Resources */ = {isa = PBXBuildFile; fileRef = E021F8C022622E1600A22477 /* PLAYER.png */; };
+		E021F8C822622E1600A22477 /* PLAYER.png in Resources */ = {isa = PBXBuildFile; fileRef = E021F8C022622E1600A22477 /* PLAYER.png */; };
+		E021F8D02262318E00A22477 /* PLAYERright.png in Resources */ = {isa = PBXBuildFile; fileRef = E021F8CF2262318D00A22477 /* PLAYERright.png */; };
+		E021F8D12262318E00A22477 /* PLAYERright.png in Resources */ = {isa = PBXBuildFile; fileRef = E021F8CF2262318D00A22477 /* PLAYERright.png */; };
+		E021F8D22262318E00A22477 /* PLAYERright.png in Resources */ = {isa = PBXBuildFile; fileRef = E021F8CF2262318D00A22477 /* PLAYERright.png */; };
+		E0FD9AD12258E818008E19BE /* Launcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FD9AD02258E818008E19BE /* Launcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +147,9 @@
 		E0154DC320CED5EB00E58663 /* House3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = House3.png; sourceTree = SOURCE_ROOT; };
 		E0154DC420CED5EB00E58663 /* House5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = House5.png; sourceTree = SOURCE_ROOT; };
 		E0154DC520CED5EB00E58663 /* House2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = House2.png; sourceTree = SOURCE_ROOT; };
+		E021F8C022622E1600A22477 /* PLAYER.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PLAYER.png; sourceTree = SOURCE_ROOT; };
+		E021F8CF2262318D00A22477 /* PLAYERright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PLAYERright.png; sourceTree = SOURCE_ROOT; };
+		E0FD9AD02258E818008E19BE /* Launcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +217,8 @@
 				A367C9AF20C158AC0065D939 /* BackgroundForTurbo.png */,
 				A3DAFF9620C44DB8008F3606 /* Background.png */,
 				A367C9B320C160810065D939 /* Earth.png */,
+				E021F8C022622E1600A22477 /* PLAYER.png */,
+				E021F8CF2262318D00A22477 /* PLAYERright.png */,
 			);
 			path = "Turbohead Shared";
 			sourceTree = "<group>";
@@ -250,6 +262,7 @@
 				A367C98820C146AB0065D939 /* AppDelegate.swift */,
 				A367C98A20C146AB0065D939 /* GameViewController.swift */,
 				A367C98C20C146AB0065D939 /* Main.storyboard */,
+				E0FD9AD02258E818008E19BE /* Launcher.swift */,
 				A367C98F20C146AB0065D939 /* Info.plist */,
 			);
 			path = "Turbohead macOS";
@@ -371,11 +384,13 @@
 				A31B6ACC20CAFB5A0071090A /* Stop.png in Resources */,
 				A31B6ABF20CAF81C0071090A /* Back.png in Resources */,
 				A367C97220C146AB0065D939 /* LaunchScreen.storyboard in Resources */,
+				E021F8D02262318E00A22477 /* PLAYERright.png in Resources */,
 				A31B6AD820CBF7750071090A /* RocketRun.png in Resources */,
 				A31B6AC120CAF81C0071090A /* Right.png in Resources */,
 				A31B6AD420CBF7590071090A /* HouseSale.png in Resources */,
 				A31B6AD220CBF7580071090A /* HouseCinema.png in Resources */,
 				A31B6AC020CAF81C0071090A /* Up.png in Resources */,
+				E021F8C622622E1600A22477 /* PLAYER.png in Resources */,
 				A3DAFF9720C44DB8008F3606 /* Background.png in Resources */,
 				A31B6AD320CBF7590071090A /* HouseBar.png in Resources */,
 				E0154DC820CED5EC00E58663 /* House5.png in Resources */,
@@ -403,6 +418,7 @@
 				A31B6AE120CBF8520071090A /* PoliceRun.png in Resources */,
 				A31B6AAF20CA9DC30071090A /* House.png in Resources */,
 				E0154DCE20CED5F200E58663 /* House2.png in Resources */,
+				E021F8D12262318E00A22477 /* PLAYERright.png in Resources */,
 				E0154DCF20CED5F200E58663 /* House3.png in Resources */,
 				A31B6AC520CAF8250071090A /* Right.png in Resources */,
 				A31B6AC420CAF8250071090A /* Back.png in Resources */,
@@ -411,6 +427,7 @@
 				A31B6ACD20CAFCA40071090A /* Stop.png in Resources */,
 				A367C99A20C146AB0065D939 /* Assets.xcassets in Resources */,
 				A39588D320C44E8100732803 /* Background.png in Resources */,
+				E021F8C722622E1600A22477 /* PLAYER.png in Resources */,
 				A31B6ADB20CBF84A0071090A /* HouseSale.png in Resources */,
 				E0154DD120CED5F200E58663 /* House5.png in Resources */,
 				A31B6ADF20CBF84F0071090A /* RocketRun.png in Resources */,
@@ -436,6 +453,7 @@
 				A31B6AE220CBF8520071090A /* PoliceRun.png in Resources */,
 				A31B6AB020CA9DC40071090A /* House.png in Resources */,
 				E0154DCA20CED5F200E58663 /* House2.png in Resources */,
+				E021F8D22262318E00A22477 /* PLAYERright.png in Resources */,
 				E0154DCB20CED5F200E58663 /* House3.png in Resources */,
 				A31B6AC920CAF8260071090A /* Right.png in Resources */,
 				A31B6AC820CAF8260071090A /* Back.png in Resources */,
@@ -444,6 +462,7 @@
 				A31B6ACE20CAFCA50071090A /* Stop.png in Resources */,
 				A367C99B20C146AB0065D939 /* Assets.xcassets in Resources */,
 				A39588D420C44E8100732803 /* Background.png in Resources */,
+				E021F8C822622E1600A22477 /* PLAYER.png in Resources */,
 				A31B6ADE20CBF84B0071090A /* HouseSale.png in Resources */,
 				E0154DCD20CED5F200E58663 /* House5.png in Resources */,
 				A31B6AE020CBF84F0071090A /* RocketRun.png in Resources */,
@@ -482,6 +501,7 @@
 				A367C99820C146AB0065D939 /* GameScene.swift in Sources */,
 				A367C98B20C146AB0065D939 /* GameViewController.swift in Sources */,
 				A367C98920C146AB0065D939 /* AppDelegate.swift in Sources */,
+				E0FD9AD12258E818008E19BE /* Launcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

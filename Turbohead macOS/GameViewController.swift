@@ -19,6 +19,8 @@ class GameViewController: NSViewController {
         
         // Present the scene
         let skView = self.view as! SKView
+        
+        //skView.preferredFramesPerSecond = 60
         skView.presentScene(scene)
         
         skView.ignoresSiblingOrder = true
